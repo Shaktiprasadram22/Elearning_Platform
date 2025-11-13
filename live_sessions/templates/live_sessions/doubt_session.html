@@ -1,0 +1,648 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Doubt Session - {{ doubt_session.course.title }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .video-container {
+        position: relative;
+        width: 100%;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .video-box {
+        position: relative;
+        width: 100%;
+        padding-bottom: 75%;
+        background: #1a1a1a;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .video-box video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        z-index: 10;
+    }
+
+    .controls-bar {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .controls-bar button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+
+    .btn-primary-custom {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-primary-custom:hover {
+        background: #0056b3;
+    }
+
+    .btn-danger-custom {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-danger-custom:hover {
+        background: #c82333;
+    }
+
+    .btn-success-custom {
+        background: #28a745;
+        color: white;
+    }
+
+    .btn-success-custom:hover {
+        background: #218838;
+    }
+
+    .btn-secondary-custom {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-secondary-custom:hover {
+        background: #5a6268;
+    }
+
+    .whiteboard-container {
+        background: white;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
+    #whiteboard {
+        display: block;
+        cursor: crosshair;
+        width: 100%;
+        height: 400px;
+        background: white;
+    }
+
+    .whiteboard-controls {
+        background: #f8f9fa;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .color-picker {
+        width: 50px;
+        height: 40px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .size-slider {
+        width: 150px;
+    }
+
+    .chat-container {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+        background: #f8f9fa;
+    }
+
+    .chat-message {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        background: white;
+        border-left: 3px solid #007bff;
+    }
+
+    .chat-message.own {
+        background: #e7f3ff;
+        border-left-color: #28a745;
+        margin-left: 20px;
+    }
+
+    .chat-message-sender {
+        font-weight: bold;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .chat-message-text {
+        margin-top: 4px;
+        word-wrap: break-word;
+    }
+
+    .chat-message-time {
+        font-size: 11px;
+        color: #999;
+        margin-top: 4px;
+    }
+
+    .chat-input-area {
+        padding: 10px;
+        border-top: 1px solid #ddd;
+        display: flex;
+        gap: 5px;
+    }
+
+    .chat-input-area input {
+        flex: 1;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .chat-input-area button {
+        padding: 8px 16px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .session-info {
+        background: #e7f3ff;
+        padding: 12px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        border-left: 4px solid #007bff;
+    }
+
+    .session-status {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .screen-share-container {
+        position: relative;
+        width: 100%;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .screen-share-video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background: #28a745;
+        color: white;
+        border-radius: 4px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        animation: slideIn 0.3s ease-in-out;
+    }
+
+    .notification.error {
+        background: #dc3545;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .tabs-container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .tab-button {
+        padding: 10px 20px;
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
+        cursor: pointer;
+        font-weight: 500;
+        color: #666;
+        transition: all 0.3s;
+    }
+
+    .tab-button.active {
+        border-bottom-color: #007bff;
+        color: #007bff;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <!-- Session Info -->
+    <div class="session-info">
+        <strong>🎓 Doubt Session</strong>
+        <span
+            class="session-status {% if doubt_session.status == 'active' %}status-active{% else %}status-pending{% endif %}">
+            {{ doubt_session.get_status_display }}
+        </span>
+        <div class="mt-2">
+            <small>
+                <strong>Course:</strong> {{ doubt_session.course.title }}<br>
+                <strong>Lesson:</strong> {{ doubt_session.lesson.title }}<br>
+                <strong>With:</strong> {{ other_user.first_name }} {{ other_user.last_name }}
+            </small>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Main Content (Left) -->
+        <div class="col-lg-8">
+            <!-- Video Grid -->
+            <div class="video-grid">
+                <div class="video-box">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                    <div class="video-label">You ({{ user.first_name }})</div>
+                </div>
+                <div class="video-box">
+                    <video id="remoteVideo" autoplay playsinline></video>
+                    <div class="video-label">{{ other_user.first_name }}</div>
+                </div>
+            </div>
+
+            <!-- Controls Bar -->
+            <div class="controls-bar">
+                <button id="toggleVideo" class="btn-primary-custom" title="Toggle Video">
+                    📹 Video
+                </button>
+                <button id="toggleAudio" class="btn-primary-custom" title="Toggle Audio">
+                    🎤 Audio
+                </button>
+                <button id="toggleScreenShare" class="btn-secondary-custom" title="Share Screen">
+                    🖥️ Share Screen
+                </button>
+                <button id="toggleWhiteboard" class="btn-secondary-custom" title="Show Whiteboard">
+                    ✏️ Whiteboard
+                </button>
+                <button id="endSession" class="btn-danger-custom" title="End Session">
+                    🛑 End Session
+                </button>
+                <div style="margin-left: auto;">
+                    <span id="sessionTimer" style="font-weight: bold; color: #666;">00:00</span>
+                </div>
+            </div>
+
+            <!-- Screen Share Container (Hidden by default) -->
+            <div id="screenShareContainer" class="screen-share-container" style="display: none;">
+                <video id="screenShareVideo" class="screen-share-video" autoplay playsinline></video>
+            </div>
+
+            <!-- Whiteboard (Hidden by default) -->
+            <div id="whiteboardSection" style="display: none;">
+                <div class="whiteboard-container">
+                    <canvas id="whiteboard"></canvas>
+                    <div class="whiteboard-controls">
+                        <label>Color: <input type="color" id="colorPicker" class="color-picker" value="#000000"></label>
+                        <label>Size: <input type="range" id="sizePicker" class="size-slider" min="1" max="20"
+                                value="2"></label>
+                        <button id="clearWhiteboard" class="btn-secondary-custom">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar (Right) -->
+        <div class="col-lg-4">
+            <!-- Tabs -->
+            <div class="tabs-container">
+                <button class="tab-button active" data-tab="chat">💬 Chat</button>
+                <button class="tab-button" data-tab="info">ℹ️ Info</button>
+            </div>
+
+            <!-- Chat Tab -->
+            <div id="chat" class="tab-content active">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off">
+                        <button id="sendChat">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Tab -->
+            <div id="info" class="tab-content">
+                <div class="card">
+                    <div class="card-body">
+                        <h6>Session Details</h6>
+                        <ul class="list-unstyled">
+                            <li><strong>Student:</strong> {{ doubt_session.student.first_name }} {{
+                                doubt_session.student.last_name }}</li>
+                            <li><strong>Instructor:</strong> {{ doubt_session.instructor.first_name|default:"Waiting..."
+                                }} {{ doubt_session.instructor.last_name|default:"" }}</li>
+                            <li><strong>Course:</strong> {{ doubt_session.course.title }}</li>
+                            <li><strong>Lesson:</strong> {{ doubt_session.lesson.title }}</li>
+                            <li><strong>Started:</strong> <span id="startTime">{{
+                                    doubt_session.started_at|date:"H:i:s"|default:"Not started" }}</span></li>
+                            <li><strong>Duration:</strong> <span id="duration">0 min</span></li>
+                        </ul>
+                        <hr>
+                        <h6>Features</h6>
+                        <ul class="list-unstyled">
+                            <li>✅ Video & Audio</li>
+                            <li>✅ Live Chat</li>
+                            <li>✅ Whiteboard</li>
+                            <li>✅ Screen Sharing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="{% static 'js/webrtc.js' %}"></script>
+<script src="{% static 'js/whiteboard.js' %}"></script>
+<script src="{% static 'js/chat.js' %}"></script>
+<script src="{% static 'js/screenshare.js' %}"></script>
+
+<script>
+    // CSRF Token Helper Function
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Initialize session
+    const roomName = '{{ room_name|escapejs }}';
+    const userId = parseInt('{{ user.id }}');
+    const userName = '{{ user.first_name|escapejs }} {{ user.last_name|escapejs }}';
+    const isStudent = '{{ is_student|lower }}' === 'true';
+    const isInstructor = '{{ is_instructor|lower }}' === 'true';
+    const sessionId = parseInt('{{ doubt_session.id }}');
+
+    // Initialize WebRTC
+    const webrtc = new WebRTCManager(roomName, userId, userName);
+    const whiteboard = new WhiteboardManager('whiteboard');
+    const chat = new ChatManager(roomName, userId, userName);
+    const screenShare = new ScreenShareManager(roomName, userId);
+
+    // Tab switching
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const tabName = e.target.dataset.tab;
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            e.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        });
+    });
+
+    // Whiteboard toggle
+    let whiteboardVisible = false;
+    document.getElementById('toggleWhiteboard').addEventListener('click', () => {
+        const whiteboardSection = document.getElementById('whiteboardSection');
+        const screenShareContainer = document.getElementById('screenShareContainer');
+
+        whiteboardVisible = !whiteboardVisible;
+
+        if (whiteboardVisible) {
+            whiteboardSection.style.display = 'block';
+            screenShareContainer.style.display = 'none';
+            document.getElementById('toggleWhiteboard').style.background = '#28a745';
+            document.getElementById('toggleScreenShare').style.background = '#6c757d';
+            // Resize canvas when shown
+            setTimeout(() => whiteboard.resizeCanvas(), 100);
+        } else {
+            whiteboardSection.style.display = 'none';
+            document.getElementById('toggleWhiteboard').style.background = '#6c757d';
+        }
+    });
+
+    // Screen share toggle
+    document.getElementById('toggleScreenShare').addEventListener('click', () => {
+        const whiteboardSection = document.getElementById('whiteboardSection');
+        const screenShareContainer = document.getElementById('screenShareContainer');
+
+        if (screenShareContainer.style.display === 'none') {
+            screenShareContainer.style.display = 'block';
+            whiteboardSection.style.display = 'none';
+            whiteboardVisible = false;
+            document.getElementById('toggleScreenShare').style.background = '#28a745';
+            document.getElementById('toggleWhiteboard').style.background = '#6c757d';
+            screenShare.startScreenShare();
+        } else {
+            screenShareContainer.style.display = 'none';
+            document.getElementById('toggleScreenShare').style.background = '#6c757d';
+            screenShare.stopScreenShare();
+        }
+    });
+
+    // Session timer
+    let startTime = new Date('{{ doubt_session.started_at|date:"Y-m-d H:i:s" }}');
+    if (startTime != 'Invalid Date') {
+        setInterval(() => {
+            const elapsed = Math.floor((new Date() - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            document.getElementById('sessionTimer').textContent =
+                `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }, 1000);
+    }
+
+    // End session - FIXED VERSION
+    document.getElementById('endSession').addEventListener('click', async () => {
+        if (confirm('Are you sure you want to end this session?')) {
+            try {
+                // Get CSRF token from cookie
+                const csrfToken = getCookie('csrftoken');
+
+                console.log('Ending session...', sessionId);
+                console.log('CSRF Token:', csrfToken);
+
+                const response = await fetch(`/live-sessions/end/${sessionId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'same-origin'
+                });
+
+                console.log('Response status:', response.status);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Response data:', data);
+
+                    if (data.success) {
+                        // Close WebRTC connection
+                        if (webrtc && webrtc.close) {
+                            webrtc.close();
+                        }
+
+                        alert('Session ended successfully!');
+
+                        // Redirect based on role
+                        setTimeout(() => {
+                            if (isStudent) {
+                                window.location.href = '/live-sessions/student-dashboard/';
+                            } else if (isInstructor) {
+                                window.location.href = '/live-sessions/instructor-dashboard/';
+                            } else {
+                                window.location.href = '/dashboards/redirect/';
+                            }
+                        }, 500);
+                    } else {
+                        alert('Error ending session: ' + (data.error || 'Unknown error'));
+                    }
+                } else {
+                    // Handle error responses
+                    const errorData = await response.json().catch(() => ({}));
+                    console.error('Error response:', errorData);
+                    alert('Error ending session: ' + (errorData.error || `Server error (${response.status})`));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to end session: ' + error.message);
+            }
+        }
+    });
+
+    // Store global references for message handlers
+    window.signalingSocket = null;
+    window.webrtc = webrtc;
+    window.whiteboard = whiteboard;
+    window.chat = chat;
+    window.screenShare = screenShare;
+
+    // Initialize
+    webrtc.initialize();
+    chat.initialize();
+
+    // Handle WebSocket messages for whiteboard, chat, and screen sharing
+    const originalOnMessage = webrtc.signalingSocket.onmessage;
+    webrtc.signalingSocket.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+
+        // Handle original signaling messages
+        if (originalOnMessage) {
+            originalOnMessage.call(this, event);
+        }
+
+        // Handle whiteboard messages
+        if (data.type === 'whiteboard_draw') {
+            whiteboard.handleRemoteDrawing(data);
+        } else if (data.type === 'whiteboard_clear') {
+            whiteboard.handleRemoteClear();
+        }
+
+        // Handle chat messages
+        if (data.type === 'chat_message') {
+            chat.handleRemoteMessage(data);
+        }
+
+        // Handle screen sharing
+        if (data.type === 'screen_share_start') {
+            screenShare.handleRemoteScreenShareStart();
+        } else if (data.type === 'screen_share_stop') {
+            screenShare.handleRemoteScreenShareStop();
+        }
+    };
+
+    // Store socket reference
+    window.signalingSocket = webrtc.signalingSocket;
+</script>
+{% endblock %}

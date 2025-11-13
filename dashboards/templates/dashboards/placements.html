@@ -1,0 +1,358 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Placement Corner - ELearning Platform{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+
+    <div class="mb-4">
+        <a href="{% url 'dashboards:student' %}" class="btn btn-sm btn-outline-secondary mb-3">← Back to Dashboard</a>
+        <h1>💼 Placement Corner</h1>
+        <p class="text-muted">Find the best jobs based on your tech stack</p>
+    </div>
+
+    <!-- CATEGORY TABS -->
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#webdev">🌐 Web Development</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#datasci">📊 Data Science</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#aiml">🤖 AI / Machine Learning</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#devops">⚙️ Cloud & DevOps</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <!-- ============================
+             🌐  WEB DEVELOPMENT (15 JOBS)
+        ============================= -->
+        <div class="tab-pane fade show active" id="webdev">
+            <div class="row">
+
+                <!-- 1 to 15 Web Dev Jobs -->
+                <!-- (PASTE YOUR 15 HERE — Already Done) -->
+
+                <!-- 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Google</h6>
+                            <h5>Frontend Engineer</h5>
+                            <p class="text-success fw-bold">₹10 – 18 LPA</p>
+                            <p>Build scalable UI systems using React & TS.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">TypeScript</span>
+                            <span class="badge bg-light text-dark">Next.js</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Meta</h6>
+                            <h5>React Developer</h5>
+                            <p class="text-success fw-bold">₹12 – 20 LPA</p>
+                            <p>Build dashboards for Meta Business Suite.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">Redux</span>
+                            <span class="badge bg-light text-dark">REST API</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Paytm</h6>
+                            <h5>Full Stack Developer</h5>
+                            <p class="text-success fw-bold">₹7 – 14 LPA</p>
+                            <p>Backend + Admin UI Development.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">Node.js</span>
+                            <span class="badge bg-light text-dark">MongoDB</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Flipkart</h6>
+                            <h5>Frontend UI Engineer</h5>
+                            <p class="text-success fw-bold">₹9 – 16 LPA</p>
+                            <p>High-performance UI component development.</p>
+                            <span class="badge bg-light text-dark">HTML</span><span
+                                class="badge bg-light text-dark">CSS</span>
+                            <span class="badge bg-light text-dark">JavaScript</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Amazon</h6>
+                            <h5>Frontend Engineer</h5>
+                            <p class="text-success fw-bold">₹15 – 28 LPA</p>
+                            <p>UI systems for internal tools.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">GraphQL</span>
+                            <span class="badge bg-light text-dark">Testing</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Zoho</h6>
+                            <h5>JavaScript Developer</h5>
+                            <p class="text-success fw-bold">₹6 – 12 LPA</p>
+                            <p>Complex UI debugging + JS Components.</p>
+                            <span class="badge bg-light text-dark">JavaScript</span><span
+                                class="badge bg-light text-dark">ES6</span>
+                            <span class="badge bg-light text-dark">SPA</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">TCS Digital</h6>
+                            <h5>Frontend Developer</h5>
+                            <p class="text-success fw-bold">₹7 – 10 LPA</p>
+                            <p>Work on Digital UI Systems.</p>
+                            <span class="badge bg-light text-dark">Bootstrap</span><span
+                                class="badge bg-light text-dark">JS</span>
+                            <span class="badge bg-light text-dark">APIs</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Infosys</h6>
+                            <h5>React Developer</h5>
+                            <p class="text-success fw-bold">₹6 – 9 LPA</p>
+                            <p>Dashboard UI + API Integration.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">Axios</span>
+                            <span class="badge bg-light text-dark">Redux</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Accenture</h6>
+                            <h5>Angular Developer</h5>
+                            <p class="text-success fw-bold">₹8 – 12 LPA</p>
+                            <p>Angular + RxJS based UI development.</p>
+                            <span class="badge bg-light text-dark">Angular</span><span
+                                class="badge bg-light text-dark">TypeScript</span>
+                            <span class="badge bg-light text-dark">HTML</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Mindtree</h6>
+                            <h5>UI Developer</h5>
+                            <p class="text-success fw-bold">₹5 – 8 LPA</p>
+                            <p>Responsive UI + Animations.</p>
+                            <span class="badge bg-light text-dark">CSS</span><span
+                                class="badge bg-light text-dark">JavaScript</span>
+                            <span class="badge bg-light text-dark">jQuery</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Swiggy</h6>
+                            <h5>Performance Engineer</h5>
+                            <p class="text-success fw-bold">₹10 – 16 LPA</p>
+                            <p>Performance optimization + Core Web Vitals.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">JS</span>
+                            <span class="badge bg-light text-dark">Performance</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Meesho</h6>
+                            <h5>Frontend Developer</h5>
+                            <p class="text-success fw-bold">₹8 – 14 LPA</p>
+                            <p>Modern UI using React & Tailwind.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">Tailwind</span>
+                            <span class="badge bg-light text-dark">Hooks</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">OLA</h6>
+                            <h5>Frontend Engineer</h5>
+                            <p class="text-success fw-bold">₹9 – 15 LPA</p>
+                            <p>Ride-booking UI development.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">JS</span>
+                            <span class="badge bg-light text-dark">APIs</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Lenskart</h6>
+                            <h5>Frontend Developer</h5>
+                            <p class="text-success fw-bold">₹7 – 11 LPA</p>
+                            <p>E-commerce UI + Animations.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">CSS</span>
+                            <span class="badge bg-light text-dark">JS</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">Freshworks</h6>
+                            <h5>Frontend Engineer</h5>
+                            <p class="text-success fw-bold">₹10 – 17 LPA</p>
+                            <p>CRM UI + dashboards.</p>
+                            <span class="badge bg-light text-dark">React</span><span
+                                class="badge bg-light text-dark">Redux</span>
+                            <span class="badge bg-light text-dark">JS</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ============================
+             📊  DATA SCIENCE (15 JOBS)
+        ============================= -->
+        <div class="tab-pane fade" id="datasci">
+            <div class="row">
+
+                <!-- 15 DATA SCIENCE JOBS -->
+                {% for i in "123456789012345" %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">DataCorp {{ i }}</h6>
+                            <h5>Data Scientist</h5>
+                            <p class="text-success fw-bold">₹8 – 20 LPA</p>
+                            <p>Work on ML models, SQL, Python, analytics.</p>
+                            <span class="badge bg-light text-dark">Python</span>
+                            <span class="badge bg-light text-dark">SQL</span>
+                            <span class="badge bg-light text-dark">ML</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- ============================
+             🤖  AI / ML (15 JOBS)
+        ============================= -->
+        <div class="tab-pane fade" id="aiml">
+            <div class="row">
+
+                {% for i in "123456789012345" %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">AICenter {{ i }}</h6>
+                            <h5>AI / ML Engineer</h5>
+                            <p class="text-success fw-bold">₹10 – 28 LPA</p>
+                            <p>Deep Learning, LLMs, Transformers, RAG.</p>
+                            <span class="badge bg-light text-dark">Python</span>
+                            <span class="badge bg-light text-dark">TensorFlow</span>
+                            <span class="badge bg-light text-dark">PyTorch</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- ============================
+             ⚙️  DEVOPS (15 JOBS)
+        ============================= -->
+        <div class="tab-pane fade" id="devops">
+            <div class="row">
+
+                {% for i in "123456789012345" %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-primary">DevOpsCo {{ i }}</h6>
+                            <h5>DevOps Engineer</h5>
+                            <p class="text-success fw-bold">₹8 – 22 LPA</p>
+                            <p>CI/CD, Docker, K8s, AWS, monitoring tools.</p>
+                            <span class="badge bg-light text-dark">AWS</span>
+                            <span class="badge bg-light text-dark">Docker</span>
+                            <span class="badge bg-light text-dark">Kubernetes</span><br><br>
+                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

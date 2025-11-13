@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Student Success Stories - ELearning Platform{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="mb-4">
+        <a href="{% url 'dashboards:student' %}" class="btn btn-sm btn-outline-secondary mb-3">← Back to Dashboard</a>
+        <h1>⭐ Student Success Stories</h1>
+        <p class="text-muted">Inspiring stories from our successful learners</p>
+    </div>
+
+    <div class="row">
+
+        <!-- 1 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Aayush Verma</h5>
+                    <p class="card-text"><strong>Got placed as SDE at TCS (8 LPA)</strong></p>
+                    <p class="card-text">
+                        Completed Full-Stack Web Development (React + Node.js).
+                        Aayush says: “Focus on DSA + 2 strong projects.
+                        HTML/CSS → JS → React → Node.js helped me crack the interview easily.”
+                    </p>
+                    <span class="badge bg-success mb-3">SDE – 8 LPA</span>
+                    <br>
+                    <small class="text-muted">Sept 04, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Ritika Mahajan</h5>
+                    <p class="card-text"><strong>AI/ML Engineer at Deloitte (11 LPA)</strong></p>
+                    <p class="card-text">
+                        Learned Python, Pandas, Machine Learning algorithms & mini projects.
+                        Ritika’s tip: “Do ML + 1 real project + basic Stats → enough for fresher ML roles.”
+                    </p>
+                    <span class="badge bg-success mb-3">ML Engineer – 11 LPA</span>
+                    <br>
+                    <small class="text-muted">Aug 19, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Sarthak Singh</h5>
+                    <p class="card-text"><strong>DevOps Engineer at Infosys (10 LPA)</strong></p>
+                    <p class="card-text">
+                        Completed DevOps Path: Git → Docker → Kubernetes → AWS → CI/CD.
+                        Tip: “Learn Linux first. Then Docker + Kubernetes = Job ready.”
+                    </p>
+                    <span class="badge bg-success mb-3">DevOps – 10 LPA</span>
+                    <br>
+                    <small class="text-muted">August 01, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Ananya Rao</h5>
+                    <p class="card-text"><strong>Frontend Developer at Zoho (7.5 LPA)</strong></p>
+                    <p class="card-text">
+                        Focused on JavaScript + React.
+                        Her tip: “Forget 100 frameworks. Master JS deeply. It pays off.”
+                    </p>
+                    <span class="badge bg-success mb-3">Frontend – 7.5 LPA</span>
+                    <br>
+                    <small class="text-muted">July 20, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Rahul Nair</h5>
+                    <p class="card-text"><strong>Data Engineer at Accenture (12 LPA)</strong></p>
+                    <p class="card-text">
+                        Learned SQL, Python, Airflow, Spark.
+                        Tip: “SQL + Python + 1 pipeline project will beat 90% applicants.”
+                    </p>
+                    <span class="badge bg-success mb-3">Data Engineer – 12 LPA</span>
+                    <br>
+                    <small class="text-muted">July 12, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Mehak Bansal</h5>
+                    <p class="card-text"><strong>Cloud Engineer at Wipro (9.2 LPA)</strong></p>
+                    <p class="card-text">
+                        AWS + Linux + Terraform done.
+                        Tip: “Start with EC2, S3, IAM… don’t jump into advanced AWS services.”
+                    </p>
+                    <span class="badge bg-success mb-3">Cloud – 9.2 LPA</span>
+                    <br>
+                    <small class="text-muted">June 29, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Ayushman Patel</h5>
+                    <p class="card-text"><strong>Backend Developer at Capgemini (7 LPA)</strong></p>
+                    <p class="card-text">
+                        Learned Node.js, Express, MongoDB, JWT auth.
+                        Tip: “Just build 3 strong backend projects. That’s enough for fresher jobs.”
+                    </p>
+                    <span class="badge bg-success mb-3">Backend – 7 LPA</span>
+                    <br>
+                    <small class="text-muted">June 15, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Shruti Sharma</h5>
+                    <p class="card-text"><strong>Product Analyst at Paytm (8 LPA)</strong></p>
+                    <p class="card-text">
+                        Learned SQL, Excel, Power BI + A/B testing basics.
+                        Tip: “Product roles need problem-solving more than coding.”
+                    </p>
+                    <span class="badge bg-success mb-3">Product Analyst – 8 LPA</span>
+                    <br>
+                    <small class="text-muted">June 02, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Manish Kumar</h5>
+                    <p class="card-text"><strong>AI Chatbot Developer (Freelancing 1.2L/month)</strong></p>
+                    <p class="card-text">
+                        Learned RAG, LLMs, Vector DBs, FastAPI.
+                        Tip: “If you learn RAG + backend, freelance projects pay FAST.”
+                    </p>
+                    <span class="badge bg-success mb-3">Freelancer – ₹1.2L/month</span>
+                    <br>
+                    <small class="text-muted">May 17, 2025</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Pooja Sinha</h5>
+                    <p class="card-text"><strong>QA Engineer at Cognizant (6 LPA)</strong></p>
+                    <p class="card-text">
+                        Learned Manual + Automation Testing (Selenium + API testing).
+                        Tip: “Testing is not backup career — it’s a solid career with stability.”
+                    </p>
+                    <span class="badge bg-success mb-3">QA Engineer – 6 LPA</span>
+                    <br>
+                    <small class="text-muted">May 01, 2025</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

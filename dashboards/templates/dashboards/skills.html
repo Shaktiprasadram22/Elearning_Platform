@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Trending Skills - ELearning Platform{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="mb-4">
+        <a href="{% url 'dashboards:student' %}" class="btn btn-sm btn-outline-secondary mb-3">← Back to Dashboard</a>
+        <h1>🔥 Trending Skills</h1>
+        <p class="text-muted">Learn the most in-demand skills in the industry</p>
+    </div>
+
+    <div class="row">
+
+        <!-- Skill 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Artificial Intelligence (AI)</h5>
+                    <p class="card-text">Learn how machines simulate human intelligence using ML & Neural Nets.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">32 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Machine Learning (ML)</h5>
+                    <p class="card-text">Build predictive models & train algorithms.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">27 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Deep Learning</h5>
+                    <p class="card-text">Master CNN, RNN, LLM architectures.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">21 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Data Science</h5>
+                    <p class="card-text">Statistics, modelling, visualization.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">40 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 5 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Full Stack Development</h5>
+                    <p class="card-text">React + Node.js + Databases + APIs.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">35 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 6 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">DevOps</h5>
+                    <p class="card-text">CI/CD, Docker, Kubernetes, pipelines.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">18 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 7 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Cloud Computing</h5>
+                    <p class="card-text">AWS, GCP, Azure fundamentals.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">25 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 8 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Cybersecurity</h5>
+                    <p class="card-text">Ethical hacking, encryption, threat modeling.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">15 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 9 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Blockchain</h5>
+                    <p class="card-text">Smart contracts & decentralized apps.</p>
+                    <span class="badge bg-warning text-dark">Medium Demand</span>
+                    <span class="badge bg-primary">12 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill 10 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Data Engineering</h5>
+                    <p class="card-text">Pipelines, ETL, warehouses.</p>
+                    <span class="badge bg-danger">High Demand</span>
+                    <span class="badge bg-primary">14 Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary w-100">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yaha tak 10 skills,  
+             agar aur 10 chahiye to bol de — turant paste kar dunga -->
+
+    </div>
+</div>
+{% endblock %}

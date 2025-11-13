@@ -1,0 +1,396 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Dashboard - E-Learning Platform{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h1>Welcome back, {{ user.username }}! 👋</h1>
+    <p class="text-muted">Student Dashboard</p>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary shadow">
+            <div class="card-body">
+                <h5 class="card-title">📚 Enrolled Courses</h5>
+                <p class="card-text display-4">{{ total_enrollments }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-success shadow">
+            <div class="card-body">
+                <h5 class="card-title">✅ Completed Lessons</h5>
+                <p class="card-text display-4">{{ completed_lessons }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-info shadow">
+            <div class="card-body">
+                <h5 class="card-title">📖 Total Lessons</h5>
+                <p class="card-text display-4">{{ total_lessons }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-warning shadow">
+            <div class="card-body">
+                <h5 class="card-title">📊 Overall Progress</h5>
+                <p class="card-text display-4">{{ overall_progress }}%</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-body">
+                <h5 class="card-title">🚀 Quick Actions</h5>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="{% url 'courses:list' %}" class="btn btn-primary">
+                        Browse All Courses
+                    </a>
+                    <a href="{% url 'session_logs:my_logs' %}" class="btn btn-info">
+                        View Session History
+                    </a>
+                    <a href="{% url 'accounts:profile' %}" class="btn btn-secondary">
+                        Edit Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- My Enrolled Courses -->
+    <div class="col-md-7">
+        <div class="card mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">📚 My Enrolled Courses</h5>
+            </div>
+            <div class="card-body">
+                {% if enrollments %}
+                <div class="list-group">
+                    {% for enrollment in enrollments %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">{{ enrollment.course.title }}</h6>
+                                <small class="text-muted">
+                                    By {{ enrollment.course.instructor.username }}
+                                </small>
+
+                                <div class="progress mt-2" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        aria-valuenow="{{ enrollment.progress_percentage }}" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+
+                                <small class="text-muted">{{ enrollment.progress_percentage }}% Complete</small>
+                            </div>
+
+                            <div class="ms-3">
+                                <a href="{% url 'courses:detail' enrollment.course.id %}"
+                                    class="btn btn-sm btn-primary">
+                                    Continue Learning →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <p class="text-muted mb-3">You haven't enrolled in any courses yet.</p>
+                    <a href="{% url 'courses:list' %}" class="btn btn-primary">
+                        Browse Courses
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Sessions -->
+    <div class="col-md-5">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">💬 Recent Doubt Sessions</h5>
+            </div>
+            <div class="card-body">
+                {% if session_logs %}
+                <div class="list-group list-group-flush">
+                    {% for log in session_logs %}
+                    <div class="list-group-item px-0">
+                        <strong>{{ log.course_name }}</strong><br>
+                        <small class="text-muted">
+                            with {{ log.instructor_name }}
+                        </small><br>
+                        <small class="text-muted">
+                            📅 {{ log.start_time|date:"M d, Y" }} •
+                            ⏱️ {{ log.duration_minutes }} min
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center mt-3">
+                    <a href="{% url 'session_logs:my_logs' %}" class="btn btn-sm btn-outline-success">
+                        View All Sessions
+                    </a>
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <p class="text-muted mb-0">No session history yet.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Home Page Sections -->
+<hr class="my-5">
+<h2 class="mb-4">📚 Learning Resources & Opportunities</h2>
+
+<!-- 1. Recent Tech Blogs -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">📚 Recent Tech Blogs</h3>
+        <a href="{% url 'dashboards:blogs' %}" class="btn btn-sm btn-outline-primary">View All Blogs →</a>
+    </div>
+    <div class="row">
+        {% for blog in blogs %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary mb-2">{{ blog.category }}</span>
+                    <h6 class="card-title">{{ blog.title|truncatewords:8 }}</h6>
+                    <p class="card-text small">{{ blog.excerpt|truncatewords:15 }}</p>
+                    <small class="text-muted">{{ blog.published_date|date:"M d, Y" }}</small>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary">Read Article</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 2. Learn for Interviews -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">🎯 Learn for Interviews (Core Subjects)</h3>
+        <a href="{% url 'dashboards:subjects' %}" class="btn btn-sm btn-outline-primary">Explore All →</a>
+    </div>
+    <div class="row">
+        {% for subject in core_subjects %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title">{{ subject.name }}</h6>
+                    <p class="card-text small">{{ subject.description|truncatewords:12 }}</p>
+                    <span class="badge bg-success">{{ subject.get_difficulty_display }}</span>
+                    <span class="badge bg-info">{{ subject.resource_count }} Resources</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary">Start Learning</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 3. Trending Skills -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">🔥 Trending Skills</h3>
+        <a href="{% url 'dashboards:skills' %}" class="btn btn-sm btn-outline-primary">Browse Skills →</a>
+    </div>
+    <div class="row">
+        {% for skill in trending_skills %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title">{{ skill.name }}</h6>
+                    <p class="card-text small">{{ skill.description|truncatewords:12 }}</p>
+                    {% if skill.demand_level == "high" %}
+                    <span class="badge bg-danger">High Demand</span>
+                    {% elif skill.demand_level == "medium" %}
+                    <span class="badge bg-warning">Medium Demand</span>
+                    {% endif %}
+                    <span class="badge bg-primary">{{ skill.courses_available }} Courses</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary">Learn Skill</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 4. Learning Paths -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">🛤️ Learning Paths</h3>
+        <a href="{% url 'dashboards:paths' %}" class="btn btn-sm btn-outline-primary">View All Paths →</a>
+    </div>
+    <div class="row">
+        {% for path in learning_paths %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title">{{ path.title|truncatewords:5 }}</h6>
+                    <p class="card-text small">{{ path.description|truncatewords:12 }}</p>
+                    <span class="badge bg-primary">{{ path.duration_weeks }} Weeks</span>
+                    <span class="badge bg-info">{{ path.enrolled_count }} Enrolled</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 5. Student Success Stories -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">⭐ Student Success Stories</h3>
+        <a href="{% url 'dashboards:stories' %}" class="btn btn-sm btn-outline-primary">Read More Stories →</a>
+    </div>
+    <div class="row">
+        {% for story in success_stories %}
+        <div class="col-md-6 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title">{{ story.student_name }}</h6>
+                    <p class="card-text small"><strong>{{ story.story_title }}</strong></p>
+                    <p class="card-text small">{{ story.story_content|truncatewords:20 }}</p>
+                    <span class="badge bg-success">{{ story.achievement }}</span>
+                    <br><br>
+                    <a href="#" class="btn btn-sm btn-outline-success">View Story</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 6. Daily Quiz -->
+{% if daily_quiz %}
+<div class="mb-5">
+    <div class="card shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="card-body">
+            <h6>{{ daily_quiz.question }}</h6>
+            <div class="row mt-3">
+                {% for option in daily_quiz.options %}
+                <div class="col-md-6 mb-2">
+                    <button class="btn btn-outline-light btn-sm w-100"
+                        onclick="alert('Answer: {{ daily_quiz.correct_answer }}\\n\\n{{ daily_quiz.explanation }}')">{{
+                        option }}</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- 7. Free Resources -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">📥 Free Resources</h3>
+        <a href="{% url 'dashboards:resources' %}" class="btn btn-sm btn-outline-primary">View All Resources →</a>
+    </div>
+    <div class="row">
+        {% for resource in free_resources %}
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-title mb-1">{{ resource.title|truncatewords:5 }}</h6>
+                        <small class="text-muted">{{ resource.subject }} • {{ resource.downloads }} Downloads</small>
+                    </div>
+                    <a href="{{ resource.file_url }}" class="btn btn-sm btn-primary" target="_blank">Download</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 8. Upcoming Webinars -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">🎤 Upcoming Webinars</h3>
+        <a href="{% url 'dashboards:webinars' %}" class="btn btn-sm btn-outline-primary">View All Webinars →</a>
+    </div>
+    <div class="row">
+        {% for webinar in upcoming_webinars %}
+        <div class="col-md-6 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary">{{ webinar.date|date:"M d, Y" }}</span>
+                    <h6 class="card-title mt-2">{{ webinar.title|truncatewords:8 }}</h6>
+                    <p class="card-text small">{{ webinar.description|truncatewords:15 }}</p>
+                    <small><strong>Speaker:</strong> {{ webinar.speaker }} • {{ webinar.duration_minutes }} min</small>
+                    <br><br>
+                    <a href="{{ webinar.registration_link }}" class="btn btn-sm btn-success" target="_blank">Register
+                        Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 9. Community CTA -->
+<div class="mb-5">
+    <div class="card shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="card-body text-center">
+            <h5 class="mb-3">💬 Join Our Community</h5>
+            <p>Connect with thousands of learners and share knowledge</p>
+            <a href="#" class="btn btn-light btn-sm">Visit Forum</a>
+        </div>
+    </div>
+</div>
+
+<!-- 10. Placement Corner -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">💼 Placement Corner</h3>
+        <a href="{% url 'dashboards:placements' %}" class="btn btn-sm btn-outline-primary">View All Jobs →</a>
+    </div>
+    <div class="row">
+        {% for placement in placement_opportunities %}
+        <div class="col-md-6 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-primary mb-1">{{ placement.company_name }}</h6>
+                    <h6 class="card-title">{{ placement.position }}</h6>
+                    <p class="text-success fw-bold small">{{ placement.salary_range }}</p>
+                    <p class="card-text small">{{ placement.description|truncatewords:15 }}</p>
+                    <p class="mb-2"><strong>Skills:</strong></p>
+                    <div class="mb-2">
+                        {% for skill in placement.required_skills|slice:":2" %}
+                        <span class="badge bg-light text-dark">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ placement.application_link }}" class="btn btn-sm btn-primary" target="_blank">Apply
+                        Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

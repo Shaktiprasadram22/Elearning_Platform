@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}My Session Logs - E-Learning Platform{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">📋 My Session History</h1>
+
+{% if logs %}
+<div class="card shadow">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Course</th>
+                        {% if user_role == 'student' %}
+                        <th>Instructor</th>
+                        {% else %}
+                        <th>Student</th>
+                        {% endif %}
+                        <th>Date & Time</th>
+                        <th>Duration</th>
+                        <th>Chat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>
+                            <strong>{{ log.course_name }}</strong>
+                        </td>
+                        {% if user_role == 'student' %}
+                        <td>{{ log.instructor_name }}</td>
+                        {% else %}
+                        <td>{{ log.student_name }}</td>
+                        {% endif %}
+                        <td>
+                            {{ log.start_time|date:"M d, Y" }}<br>
+                            <small class="text-muted">{{ log.start_time|date:"h:i A" }}</small>
+                        </td>
+                        <td>
+                            {% if log.duration_minutes %}
+                            <span class="badge bg-info">{{ log.duration_minutes }} min</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Ongoing</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if log.chat_transcript %}
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#chatModal{{ forloop.counter }}">
+                                💬 View ({{ log.chat_transcript|length }})
+                            </button>
+
+                            <!-- Chat Modal -->
+                            <div class="modal fade" id="chatModal{{ forloop.counter }}" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Chat Transcript</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {% for msg in log.chat_transcript %}
+                                            <div class="mb-3">
+                                                <strong>{{ msg.sender }}:</strong> {{ msg.message }}<br>
+                                                <small class="text-muted">{{ msg.timestamp }}</small>
+                                            </div>
+                                            <hr>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                            <span class="text-muted">No chat</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info text-center">
+    <h4>📭 No Session Logs Found</h4>
+    <p class="mb-0">You haven't completed any doubt sessions yet.</p>
+</div>
+{% endif %}
+
+<div class="mt-4">
+    <a href="{% url 'dashboards:redirect' %}" class="btn btn-secondary">
+        ← Back to Dashboard
+    </a>
+</div>
+{% endblock %}

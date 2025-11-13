@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Upcoming Webinars - ELearning Platform{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="mb-4">
+        <a href="{% url 'dashboards:student' %}" class="btn btn-sm btn-outline-secondary mb-3">← Back to Dashboard</a>
+        <h1>🎤 Upcoming Webinars</h1>
+        <p class="text-muted">Join live sessions with industry experts</p>
+    </div>
+
+    <div class="row">
+
+        <!-- 1️⃣ Webinar -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary">Jan 20, 2026 - 19:00</span>
+                    <h5 class="card-title mt-2">Crack DSA Interviews in 60 Days</h5>
+                    <p class="card-text">A complete roadmap for DSA prep, patterns, real interview problems.</p>
+                    <p><strong>Speaker:</strong> Arjun Malhotra (Ex–Amazon)</p>
+                    <p><strong>Duration:</strong> 90 minutes</p>
+                    <p><strong>Registered:</strong> 3,200 students</p>
+                    <a href="https://meet.google.com/xyz-abcd-123" class="btn btn-sm btn-success" target="_blank">Join
+                        Google Meet</a>
+                    <a href="#" class="btn btn-sm btn-outline-primary ms-2">Add to Calendar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2️⃣ Webinar -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary">Jan 25, 2026 - 16:00</span>
+                    <h5 class="card-title mt-2">Master DevOps: Docker → K8s → AWS</h5>
+                    <p class="card-text">Hands-on session: CI/CD, Docker images, cloud deployment basics.</p>
+                    <p><strong>Speaker:</strong> Neha Sharma (DevOps Lead @ Zoho)</p>
+                    <p><strong>Duration:</strong> 120 minutes</p>
+                    <p><strong>Registered:</strong> 4,900 students</p>
+                    <a href="https://zoom.us/fake-devops-webinar" class="btn btn-sm btn-success" target="_blank">Join
+                        Zoom</a>
+                    <a href="#" class="btn btn-sm btn-outline-primary ms-2">Add to Calendar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3️⃣ Webinar -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary">Feb 03, 2026 - 18:30</span>
+                    <h5 class="card-title mt-2">AI + RAG: How to Build ChatGPT-Like Systems</h5>
+                    <p class="card-text">Embeddings, Vector DBs, Retrieval pipeline & LangChain live demo.</p>
+                    <p><strong>Speaker:</strong> Aditya Rao (AI Scientist @ Microsoft)</p>
+                    <p><strong>Duration:</strong> 75 minutes</p>
+                    <p><strong>Registered:</strong> 6,150 students</p>
+                    <a href="https://meet.google.com/rag-ai-1234" class="btn btn-sm btn-success" target="_blank">Join
+                        Google Meet</a>
+                    <a href="#" class="btn btn-sm btn-outline-primary ms-2">Add to Calendar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4️⃣ Webinar -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary">Feb 10, 2026 - 17:00</span>
+                    <h5 class="card-title mt-2">Full Stack Web Dev Roadmap 2026</h5>
+                    <p class="card-text">HTML → CSS → JS → React → Node → Database → Deployment strategy.</p>
+                    <p><strong>Speaker:</strong> Rohan Gupta (Senior Engineer @ Paytm)</p>
+                    <p><strong>Duration:</strong> 80 minutes</p>
+                    <p><strong>Registered:</strong> 5,000 students</p>
+                    <a href="https://zoom.us/fake-webdev-zoom" class="btn btn-sm btn-success" target="_blank">Join
+                        Zoom</a>
+                    <a href="#" class="btn btn-sm btn-outline-primary ms-2">Add to Calendar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5️⃣ Webinar -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary">Feb 18, 2026 - 20:30</span>
+                    <h5 class="card-title mt-2">System Design for Beginners</h5>
+                    <p class="card-text">Load balancers, caching, scaling, DB sharding, real interview diagrams.</p>
+                    <p><strong>Speaker:</strong> Shubham Verma (Architect @ Walmart)</p>
+                    <p><strong>Duration:</strong> 100 minutes</p>
+                    <p><strong>Registered:</strong> 2,750 students</p>
+                    <a href="https://meet.google.com/sys-design-beg" class="btn btn-sm btn-success" target="_blank">Join
+                        Google Meet</a>
+                    <a href="#" class="btn btn-sm btn-outline-primary ms-2">Add to Calendar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6️⃣ Webinar -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary">Feb 24, 2026 - 15:00</span>
+                    <h5 class="card-title mt-2">Crack Product-Based Interviews (2026 Guide)</h5>
+                    <p class="card-text">Resume tips, DSA roadmap, projects, HR strategy, communication tips.</p>
+                    <p><strong>Speaker:</strong> Ankita Jain (Talent Lead @ Google India)</p>
+                    <p><strong>Duration:</strong> 90 minutes</p>
+                    <p><strong>Registered:</strong> 8,400 students</p>
+                    <a href="https://zoom.us/pbi-2026-zoom" class="btn btn-sm btn-success" target="_blank">Join Zoom</a>
+                    <a href="#" class="btn btn-sm btn-outline-primary ms-2">Add to Calendar</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

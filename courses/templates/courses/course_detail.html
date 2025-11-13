@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }} - E-Learning Platform{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1>{{ course.title }}</h1>
+        <p class="lead">{{ course.description }}</p>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-2">
+                            <strong>Instructor:</strong> {{ course.instructor.username }}
+                        </p>
+                        <p class="mb-2">
+                            <strong>Category:</strong>
+                            <span class="badge bg-info">{{ course.get_category_display }}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-2">
+                            <strong>Price:</strong>
+                            <span class="text-success fw-bold">₹{{ course.price }}</span>
+                        </p>
+                        <p class="mb-2">
+                            <strong>Total Lessons:</strong> {{ course.get_total_lessons }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Actions -->
+        {% if user.profile.role == 'student' %}
+        {% if is_enrolled %}
+        <div class="alert alert-success">
+            <strong>✓ You are enrolled in this course</strong>
+            {% if enrollment %}
+            <p class="mb-0">Progress: {{ enrollment.get_progress_percentage }}% complete</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'live_sessions:request' course.id %}" class="btn btn-warning mb-4">
+            📞 Request 1-to-1 Doubt Session
+        </a>
+        {% else %}
+        <a href="{% url 'courses:enroll' course.id %}" class="btn btn-success btn-lg mb-4">
+            🎓 Enroll Now - ₹{{ course.price }}
+        </a>
+        {% endif %}
+        {% endif %}
+
+        <!-- Instructor Actions -->
+        {% if is_instructor %}
+        <div class="mb-4">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addLessonModal">
+                ➕ Add New Lesson
+            </button>
+        </div>
+
+        <!-- Add Lesson Modal -->
+        <div class="modal fade" id="addLessonModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New Lesson</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{% url 'courses:add_lesson' course.id %}"
+                            enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Lesson Title *</label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="video_file" class="form-label">Video File (MP4)</label>
+                                <input type="file" class="form-control" id="video_file" name="video_file"
+                                    accept="video/mp4">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="pdf_file" class="form-label">PDF Notes</label>
+                                <input type="file" class="form-control" id="pdf_file" name="pdf_file"
+                                    accept="application/pdf">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="duration" class="form-label">Duration (minutes)</label>
+                                <input type="number" class="form-control" id="duration" name="duration" value="0"
+                                    min="0">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-success">Add Lesson</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Course Lessons -->
+        <h3 class="mt-4 mb-3">📚 Course Lessons</h3>
+        {% if lessons %}
+        <div class="list-group">
+            {% for lesson in lessons %}
+            <a href="{% url 'courses:lesson_watch' lesson.id %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-1">{{ forloop.counter }}. {{ lesson.title }}</h5>
+                        <p class="mb-1 text-muted">{{ lesson.description|truncatewords:15 }}</p>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-primary">⏱️ {{ lesson.duration }} min</span>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            📝 No lessons available yet.
+            {% if is_instructor %}
+            Click "Add New Lesson" to get started.
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+        {% if course.thumbnail %}
+        <img src="{{ course.thumbnail.url }}" class="img-fluid rounded shadow mb-3" alt="{{ course.title }}">
+        {% endif %}
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">📊 Course Stats</h5>
+                <hr>
+                <p class="mb-2"><strong>👥 Total Students:</strong> {{ course.get_total_students }}</p>
+                <p class="mb-2"><strong>📚 Total Lessons:</strong> {{ course.get_total_lessons }}</p>
+                <p class="mb-2"><strong>📅 Created:</strong> {{ course.created_at|date:"M d, Y" }}</p>
+                <p class="mb-0"><strong>🔄 Updated:</strong> {{ course.updated_at|date:"M d, Y" }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

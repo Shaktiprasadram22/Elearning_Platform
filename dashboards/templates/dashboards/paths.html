@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Learning Paths - ELearning Platform{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+    <div class="mb-4">
+        <a href="{% url 'dashboards:student' %}" class="btn btn-sm btn-outline-secondary mb-3">← Back to Dashboard</a>
+        <h1>🛤️ Learning Paths</h1>
+        <p class="text-muted">Structured learning journeys to master new skills</p>
+    </div>
+
+    <div class="row">
+
+        <!-- ⚙️ DEVOPS PATH -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">DevOps Learning Path</h5>
+                    <p>Learn CI/CD, Docker, Kubernetes, AWS, Monitoring and Automation.</p>
+                    <span class="badge bg-primary">12 Weeks</span>
+                    <span class="badge bg-success">Intermediate</span>
+                    <br><br>
+                    <a class="btn btn-sm btn-primary w-100" data-bs-toggle="collapse" href="#devopsRoadmap">
+                        View Roadmap
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌐 WEB DEVELOPMENT PATH -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Web Development Path</h5>
+                    <p>Frontend + Backend + Database + Deployment.</p>
+                    <span class="badge bg-primary">14 Weeks</span>
+                    <span class="badge bg-success">Beginner Friendly</span>
+                    <br><br>
+                    <a class="btn btn-sm btn-primary w-100" data-bs-toggle="collapse" href="#webdevRoadmap">
+                        View Roadmap
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🤖 RAG + AI PATH -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">RAG (AI) Learning Path</h5>
+                    <p>Embeddings, Vector DBs, LLMs, Retrieval Pipelines, Agents.</p>
+                    <span class="badge bg-primary">8 Weeks</span>
+                    <span class="badge bg-success">Advanced</span>
+                    <br><br>
+                    <a class="btn btn-sm btn-primary w-100" data-bs-toggle="collapse" href="#ragRoadmap">
+                        View Roadmap
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="mt-4 mb-4">
+
+    <!-- 🌋 ROADMAPS BELOW -->
+
+    <!-- DEVOPS ROADMAP -->
+    <div class="collapse" id="devopsRoadmap">
+        <div class="card card-body mb-4 shadow-sm">
+            <h3>⚙️ DevOps Roadmap</h3>
+            <ul>
+                <li><b>1. Learn Linux Basics</b> – Commands, permissions, SSH</li>
+                <li><b>2. Git & GitHub</b> – Branching, merging, workflows</li>
+                <li><b>3. Scripting</b> – Bash, Python automation</li>
+                <li><b>4. CI/CD Basics</b> – GitHub Actions / Jenkins / GitLab CI</li>
+                <li><b>5. Containers</b> – Docker, Docker Compose, images, volumes</li>
+                <li><b>6. Kubernetes</b> – Pods, Deployments, Services, Helm</li>
+                <li><b>7. Cloud</b> – AWS EC2, S3, Lambda, IAM, VPC</li>
+                <li><b>8. Monitoring</b> – Prometheus, Grafana</li>
+                <li><b>9. Infrastructure as Code</b> – Terraform basics</li>
+                <li><b>10. Deploy a full project</b> – CI/CD → Docker → K8s → AWS</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- WEB DEV ROADMAP -->
+    <div class="collapse" id="webdevRoadmap">
+        <div class="card card-body mb-4 shadow-sm">
+            <h3>🌐 Web Development Roadmap</h3>
+            <h5>Frontend</h5>
+            <ul>
+                <li>HTML5 – Elements, forms, semantic tags</li>
+                <li>CSS3 – Flexbox, Grid, Responsive design</li>
+                <li>JavaScript – DOM, Fetch API, ES6 Concepts</li>
+                <li>React – Components, hooks, routing, state mgmt</li>
+            </ul>
+
+            <h5>Backend</h5>
+            <ul>
+                <li>Node.js – Event loop, modules</li>
+                <li>Express.js – REST APIs, Middleware</li>
+                <li>Auth – JWT, session, cookies</li>
+            </ul>
+
+            <h5>Databases</h5>
+            <ul>
+                <li>MongoDB / PostgreSQL</li>
+                <li>Schema design, indexes</li>
+            </ul>
+
+            <h5>DevOps Basics</h5>
+            <ul>
+                <li>Hosting – Vercel/Netlify</li>
+                <li>Backend Deployment – Render / Railway / AWS</li>
+                <li>GitHub CI/CD</li>
+            </ul>
+
+            <h5>Final Project</h5>
+            <ul>
+                <li>Full-stack MERN app with auth + dashboard</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- RAG ROADMAP -->
+    <div class="collapse" id="ragRoadmap">
+        <div class="card card-body mb-4 shadow-sm">
+            <h3>🤖 RAG (AI) Roadmap</h3>
+            <ul>
+                <li><b>1. Python Basics</b> – NumPy, Pandas</li>
+                <li><b>2. NLP Basics</b> – Tokenization, embeddings</li>
+                <li><b>3. LLM Fundamentals</b> – GPT, Transformers</li>
+                <li><b>4. Text Embeddings</b> – OpenAI / BAAI / SentenceTransformers</li>
+                <li><b>5. Vector Databases</b> – FAISS, ChromaDB, Pinecone</li>
+                <li><b>6. Retrieval Pipelines</b> – Chunking, reranking, query expansion</li>
+                <li><b>7. RAG Architectures</b> – Basic RAG, Advanced RAG, Graph RAG</li>
+                <li><b>8. Tools</b> – LangChain, LlamaIndex</li>
+                <li><b>9. Build a Chatbot</b> – RAG pipeline + memory</li>
+                <li><b>10. Deploy RAG</b> – FastAPI + Docker + Cloud</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

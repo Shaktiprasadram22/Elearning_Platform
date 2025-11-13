@@ -1,0 +1,1951 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Learn for Interviews - ELearning Platform{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="mb-4">
+        <a href="{% url 'dashboards:student' %}" class="btn btn-sm btn-outline-secondary mb-3">← Back to Dashboard</a>
+        <h1>🎯 Learn for Interviews (Core Subjects)</h1>
+        <p class="text-muted">Master essential topics and the most asked interview questions (click a subject → then
+            click a question to view the answer).</p>
+    </div>
+
+    <!-- Subjects accordion -->
+    <div class="accordion" id="subjectsAccordion">
+
+        <!-- 1) Operating Systems -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOS">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOS"
+                    aria-expanded="true" aria-controls="collapseOS">
+                    Operating Systems (OS) — FAQ + 20 Q/A
+                </button>
+            </h2>
+            <div id="collapseOS" class="accordion-collapse collapse show" aria-labelledby="headingOS"
+                data-bs-parent="#subjectsAccordion">
+                <div class="accordion-body">
+                    <p><strong>FAQ (quick):</strong></p>
+                    <ul>
+                        <li>Process vs Thread: A process has its own memory space; threads share process memory.</li>
+                        <li>Context switch: CPU switching from one process/thread to another.</li>
+                        <li>Deadlock: Circular waiting for resources, none can proceed.</li>
+                    </ul>
+
+                    <hr>
+                    <div class="accordion" id="osQA">
+                        <!-- OS Q/A 1..20 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc1" aria-expanded="false" aria-controls="osc1">
+                                    Q1. What is a process?
+                                </button>
+                            </h2>
+                            <div id="osc1" class="accordion-collapse collapse" aria-labelledby="osq1"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">A process is an instance of a running program that has its
+                                    own memory space, program counter, and resources managed by the OS.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc2" aria-expanded="false" aria-controls="osc2">
+                                    Q2. What is a thread?
+                                </button>
+                            </h2>
+                            <div id="osc2" class="accordion-collapse collapse" aria-labelledby="osq2"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">A thread is the smallest unit of CPU execution within a
+                                    process. Threads in the same process share memory and resources, allowing
+                                    lightweight concurrency.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc3" aria-expanded="false" aria-controls="osc3">
+                                    Q3. What is context switching and why is it expensive?
+                                </button>
+                            </h2>
+                            <div id="osc3" class="accordion-collapse collapse" aria-labelledby="osq3"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Context switching saves the CPU state of one process/thread
+                                    and loads another’s state. It's expensive because it involves memory management,
+                                    cache/TLB flushes, and CPU register operations.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc4" aria-expanded="false" aria-controls="osc4">
+                                    Q4. Explain difference between preemptive and non-preemptive scheduling.
+                                </button>
+                            </h2>
+                            <div id="osc4" class="accordion-collapse collapse" aria-labelledby="osq4"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Preemptive scheduling can interrupt a running process to
+                                    start another (e.g., Round Robin). Non-preemptive scheduling runs a process to
+                                    completion or until it blocks (e.g., FCFS).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc5" aria-expanded="false" aria-controls="osc5">
+                                    Q5. What is a critical section and how do you protect it?
+                                </button>
+                            </h2>
+                            <div id="osc5" class="accordion-collapse collapse" aria-labelledby="osq5"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">A critical section accesses shared resources. Protect with
+                                    synchronization primitives: mutexes, semaphores, locks, or monitor constructs to
+                                    ensure mutual exclusion.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc6" aria-expanded="false" aria-controls="osc6">
+                                    Q6. What is deadlock? Name necessary conditions.
+                                </button>
+                            </h2>
+                            <div id="osc6" class="accordion-collapse collapse" aria-labelledby="osq6"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Deadlock: processes wait forever for resources. Necessary
+                                    conditions: mutual exclusion, hold and wait, no preemption, circular wait.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc7" aria-expanded="false" aria-controls="osc7">
+                                    Q7. How to prevent or handle deadlocks?
+                                </button>
+                            </h2>
+                            <div id="osc7" class="accordion-collapse collapse" aria-labelledby="osq7"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Prevent by removing one of the necessary conditions, use
+                                    resource ordering, allow preemption, or use deadlock detection with recovery
+                                    (rollback, kill process).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc8" aria-expanded="false" aria-controls="osc8">
+                                    Q8. What is paging? What problem does it solve?
+                                </button>
+                            </h2>
+                            <div id="osc8" class="accordion-collapse collapse" aria-labelledby="osq8"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Paging divides memory into fixed-size pages and maps them to
+                                    physical frames to avoid external fragmentation and provide efficient memory
+                                    allocation.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc9" aria-expanded="false" aria-controls="osc9">
+                                    Q9. What is virtual memory?
+                                </button>
+                            </h2>
+                            <div id="osc9" class="accordion-collapse collapse" aria-labelledby="osq9"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Virtual memory gives processes the illusion of a large
+                                    contiguous address space by mapping virtual addresses to physical memory and using
+                                    disk space (swap) as extension.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc10" aria-expanded="false" aria-controls="osc10">
+                                    Q10. What is thrashing?
+                                </button>
+                            </h2>
+                            <div id="osc10" class="accordion-collapse collapse" aria-labelledby="osq10"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Thrashing occurs when the OS spends more time swapping pages
+                                    in/out than executing processes due to insufficient physical memory and excessive
+                                    page faults.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc11" aria-expanded="false" aria-controls="osc11">
+                                    Q11. Explain page replacement algorithms (LRU, FIFO).
+                                </button>
+                            </h2>
+                            <div id="osc11" class="accordion-collapse collapse" aria-labelledby="osq11"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">FIFO removes oldest page; LRU removes least recently used
+                                    page. LRU approximates optimal behavior when recent use predicts future use.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc12" aria-expanded="false" aria-controls="osc12">
+                                    Q12. What is swapping?
+                                </button>
+                            </h2>
+                            <div id="osc12" class="accordion-collapse collapse" aria-labelledby="osq12"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Swapping moves entire processes between memory and disk to
+                                    free memory; it's heavier than paging and used in older OS designs or under memory
+                                    pressure.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq13">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc13" aria-expanded="false" aria-controls="osc13">
+                                    Q13. What are system calls?
+                                </button>
+                            </h2>
+                            <div id="osc13" class="accordion-collapse collapse" aria-labelledby="osq13"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">System calls are kernel-provided APIs allowing user programs
+                                    to request privileged operations (I/O, process control, memory management) from the
+                                    OS.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq14">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc14" aria-expanded="false" aria-controls="osc14">
+                                    Q14. What is inter-process communication (IPC)?
+                                </button>
+                            </h2>
+                            <div id="osc14" class="accordion-collapse collapse" aria-labelledby="osq14"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">IPC allows processes to exchange data using pipes, sockets,
+                                    shared memory, message queues, and signals, each with trade-offs in speed and
+                                    complexity.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq15">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc15" aria-expanded="false" aria-controls="osc15">
+                                    Q15. Explain mutex vs semaphore.
+                                </button>
+                            </h2>
+                            <div id="osc15" class="accordion-collapse collapse" aria-labelledby="osq15"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Mutex is a binary lock for mutual exclusion; semaphore is a
+                                    counter allowing limited concurrent access. Mutex associates with a single owner;
+                                    semaphores do not.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq16">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc16" aria-expanded="false" aria-controls="osc16">
+                                    Q16. What is starvation and how to avoid it?
+                                </button>
+                            </h2>
+                            <div id="osc16" class="accordion-collapse collapse" aria-labelledby="osq16"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Starvation occurs when a process never gets resources
+                                    because others are favored. Avoid by using fair scheduling, aging, or priority
+                                    adjustments.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq17">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc17" aria-expanded="false" aria-controls="osc17">
+                                    Q17. How does the scheduler decide which process to run?
+                                </button>
+                            </h2>
+                            <div id="osc17" class="accordion-collapse collapse" aria-labelledby="osq17"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Scheduler uses policy (priority, fairness) and algorithm
+                                    (RR, SJF, Multilevel Queue) considering CPU burst, waiting time, and priority to
+                                    pick processes.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq18">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc18" aria-expanded="false" aria-controls="osc18">
+                                    Q18. Explain kernel mode vs user mode.
+                                </button>
+                            </h2>
+                            <div id="osc18" class="accordion-collapse collapse" aria-labelledby="osq18"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">Kernel mode has full hardware access for privileged
+                                    operations; user mode restricts access so user programs cannot corrupt system state
+                                    directly.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq19">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc19" aria-expanded="false" aria-controls="osc19">
+                                    Q19. What is I/O scheduling?
+                                </button>
+                            </h2>
+                            <div id="osc19" class="accordion-collapse collapse" aria-labelledby="osq19"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">I/O scheduling orders disk requests to improve throughput
+                                    and reduce seek time (algorithms: FCFS, SSTF, SCAN, C-SCAN).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="osq20">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#osc20" aria-expanded="false" aria-controls="osc20">
+                                    Q20. How do modern OSes handle memory fragmentation?
+                                </button>
+                            </h2>
+                            <div id="osc20" class="accordion-collapse collapse" aria-labelledby="osq20"
+                                data-bs-parent="#osQA">
+                                <div class="accordion-body">OSes use paging to eliminate external fragmentation;
+                                    compaction and dynamic allocation strategies reduce internal fragmentation; virtual
+                                    memory isolates processes.</div>
+                            </div>
+                        </div>
+                        <!-- end OS Q/A -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2) Computer Networks -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingCN">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseCN" aria-expanded="false" aria-controls="collapseCN">
+                    Computer Networks (CN) — FAQ + 20 Q/A
+                </button>
+            </h2>
+            <div id="collapseCN" class="accordion-collapse collapse" aria-labelledby="headingCN"
+                data-bs-parent="#subjectsAccordion">
+                <div class="accordion-body">
+                    <p><strong>FAQ (quick):</strong></p>
+                    <ul>
+                        <li>OSI vs TCP/IP: OSI is conceptual 7-layer model; TCP/IP is practical 4-layer model.</li>
+                        <li>IP vs TCP vs UDP: IP routes packets; TCP is reliable stream; UDP is connectionless.</li>
+                        <li>What is routing? Determining best path to send packets across networks.</li>
+                    </ul>
+
+                    <hr>
+                    <div class="accordion" id="cnQA">
+                        <!-- CN Q/A 1..20 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc1" aria-expanded="false" aria-controls="cnc1">
+                                    Q1. What is the difference between TCP and UDP?
+                                </button>
+                            </h2>
+                            <div id="cnc1" class="accordion-collapse collapse" aria-labelledby="cnq1"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">TCP is connection-oriented and reliable with flow/congestion
+                                    control; UDP is connectionless, lightweight, and suitable for real-time apps where
+                                    occasional loss is acceptable.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc2" aria-expanded="false" aria-controls="cnc2">
+                                    Q2. Explain the OSI model layers briefly.
+                                </button>
+                            </h2>
+                            <div id="cnc2" class="accordion-collapse collapse" aria-labelledby="cnq2"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Seven layers: Physical, Data Link, Network, Transport,
+                                    Session, Presentation, Application — each handles specific functions from bits to
+                                    application services.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc3" aria-expanded="false" aria-controls="cnc3">
+                                    Q3. What is a subnet and subnet mask?
+                                </button>
+                            </h2>
+                            <div id="cnc3" class="accordion-collapse collapse" aria-labelledby="cnq3"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Subnet divides a network into smaller parts. Subnet mask
+                                    (e.g., 255.255.255.0) separates network and host bits in an IP address.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc4" aria-expanded="false" aria-controls="cnc4">
+                                    Q4. What is NAT and why is it used?
+                                </button>
+                            </h2>
+                            <div id="cnc4" class="accordion-collapse collapse" aria-labelledby="cnq4"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">NAT maps private IPs to a public IP, conserving IPv4
+                                    addresses and allowing multiple hosts to share one public address while hiding
+                                    internal topology.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc5" aria-expanded="false" aria-controls="cnc5">
+                                    Q5. What is DNS and how does it work?
+                                </button>
+                            </h2>
+                            <div id="cnc5" class="accordion-collapse collapse" aria-labelledby="cnq5"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">DNS translates domain names to IP addresses using
+                                    hierarchical servers (root, TLD, authoritative). Clients query resolvers which
+                                    follow referrals to get records.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc6" aria-expanded="false" aria-controls="cnc6">
+                                    Q6. What is routing vs switching?
+                                </button>
+                            </h2>
+                            <div id="cnc6" class="accordion-collapse collapse" aria-labelledby="cnq6"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Switching operates within a LAN (frame forwarding using
+                                    MACs). Routing operates between networks (packet forwarding using IPs and routing
+                                    tables).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc7" aria-expanded="false" aria-controls="cnc7">
+                                    Q7. Explain TCP three-way handshake.
+                                </button>
+                            </h2>
+                            <div id="cnc7" class="accordion-collapse collapse" aria-labelledby="cnq7"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Client sends SYN, server replies SYN-ACK, client sends ACK —
+                                    connection established. This ensures both sides agree on initial sequence numbers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc8" aria-expanded="false" aria-controls="cnc8">
+                                    Q8. What is congestion vs flow control?
+                                </button>
+                            </h2>
+                            <div id="cnc8" class="accordion-collapse collapse" aria-labelledby="cnq8"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Flow control prevents sender from overwhelming receiver
+                                    (e.g., TCP window). Congestion control prevents network overload (e.g., TCP
+                                    Reno/CUBIC).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc9" aria-expanded="false" aria-controls="cnc9">
+                                    Q9. What is ARP?
+                                </button>
+                            </h2>
+                            <div id="cnc9" class="accordion-collapse collapse" aria-labelledby="cnq9"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">ARP (Address Resolution Protocol) maps IPv4 addresses to MAC
+                                    addresses on a local network segment so frames can be delivered at Data Link layer.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc10" aria-expanded="false" aria-controls="cnc10">
+                                    Q10. What are sockets?
+                                </button>
+                            </h2>
+                            <div id="cnc10" class="accordion-collapse collapse" aria-labelledby="cnq10"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Sockets are endpoints for network communication (IP + port).
+                                    They provide a programming interface for TCP/UDP communication.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc11" aria-expanded="false" aria-controls="cnc11">
+                                    Q11. What is MTU and fragmentation?
+                                </button>
+                            </h2>
+                            <div id="cnc11" class="accordion-collapse collapse" aria-labelledby="cnq11"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">MTU is the maximum transmission unit (largest packet a link
+                                    can carry). If packet > MTU, IP fragmentation splits packet into smaller fragments.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc12" aria-expanded="false" aria-controls="cnc12">
+                                    Q12. Explain HTTPS briefly.
+                                </button>
+                            </h2>
+                            <div id="cnc12" class="accordion-collapse collapse" aria-labelledby="cnq12"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">HTTPS = HTTP over TLS. TLS provides encryption, integrity,
+                                    and server (and optionally client) authentication using certificates and keys.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq13">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc13" aria-expanded="false" aria-controls="cnc13">
+                                    Q13. What are common routing algorithms?
+                                </button>
+                            </h2>
+                            <div id="cnc13" class="accordion-collapse collapse" aria-labelledby="cnq13"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Distance-vector (e.g., RIP) and link-state (e.g., OSPF).
+                                    Distance-vector uses periodic updates; link-state floods link info and computes
+                                    shortest path (Dijkstra).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq14">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc14" aria-expanded="false" aria-controls="cnc14">
+                                    Q14. What is QoS?
+                                </button>
+                            </h2>
+                            <div id="cnc14" class="accordion-collapse collapse" aria-labelledby="cnq14"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Quality of Service prioritizes certain traffic to meet
+                                    latency, jitter, and throughput requirements (useful for VoIP, streaming).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq15">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc15" aria-expanded="false" aria-controls="cnc15">
+                                    Q15. How does TCP ensure reliable delivery?
+                                </button>
+                            </h2>
+                            <div id="cnc15" class="accordion-collapse collapse" aria-labelledby="cnq15"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">TCP uses sequence numbers, ACKs, retransmissions on
+                                    timeouts, checksums, and congestion/flow control to provide reliable, ordered
+                                    delivery.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq16">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc16" aria-expanded="false" aria-controls="cnc16">
+                                    Q16. What is a VLAN?
+                                </button>
+                            </h2>
+                            <div id="cnc16" class="accordion-collapse collapse" aria-labelledby="cnq16"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">VLAN logically segments a switch into multiple broadcast
+                                    domains, improving security and network organization without separate physical
+                                    switches.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq17">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc17" aria-expanded="false" aria-controls="cnc17">
+                                    Q17. What is symmetric vs asymmetric encryption in networks?
+                                </button>
+                            </h2>
+                            <div id="cnc17" class="accordion-collapse collapse" aria-labelledby="cnq17"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Symmetric uses same key for encrypt/decrypt (fast);
+                                    asymmetric uses public/private key pairs (slower, used for key exchange &
+                                    signatures).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq18">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc18" aria-expanded="false" aria-controls="cnc18">
+                                    Q18. What is port number and well-known ports?
+                                </button>
+                            </h2>
+                            <div id="cnc18" class="accordion-collapse collapse" aria-labelledby="cnq18"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Port is endpoint identifier within IP. Well-known ports: 80
+                                    (HTTP), 443 (HTTPS), 22 (SSH), 25 (SMTP), 53 (DNS).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq19">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc19" aria-expanded="false" aria-controls="cnc19">
+                                    Q19. How is reliability different in UDP-based protocols?
+                                </button>
+                            </h2>
+                            <div id="cnc19" class="accordion-collapse collapse" aria-labelledby="cnq19"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">UDP doesn't guarantee delivery — apps implement reliability
+                                    if needed (e.g., RTP with RTCP or custom ACKs) for low-latency use-cases.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="cnq20">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#cnc20" aria-expanded="false" aria-controls="cnc20">
+                                    Q20. What is link-state routing advantage over distance-vector?
+                                </button>
+                            </h2>
+                            <div id="cnc20" class="accordion-collapse collapse" aria-labelledby="cnq20"
+                                data-bs-parent="#cnQA">
+                                <div class="accordion-body">Link-state has faster convergence and avoids routing loops
+                                    by using global topology knowledge and Dijkstra; distance-vector is simpler but
+                                    slower and can loop.</div>
+                            </div>
+                        </div>
+                        <!-- end CN Q/A -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3) DBMS -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingDB">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseDB" aria-expanded="false" aria-controls="collapseDB">
+                    DBMS — FAQ + 20 Q/A
+                </button>
+            </h2>
+            <div id="collapseDB" class="accordion-collapse collapse" aria-labelledby="headingDB"
+                data-bs-parent="#subjectsAccordion">
+                <div class="accordion-body">
+                    <p><strong>FAQ (quick):</strong></p>
+                    <ul>
+                        <li>ACID vs BASE: ACID ensures strong consistency; BASE prefers availability and eventual
+                            consistency.</li>
+                        <li>Normalization removes redundancy (1NF, 2NF, 3NF).</li>
+                        <li>Index speeds queries but adds write overhead.</li>
+                    </ul>
+
+                    <hr>
+                    <div class="accordion" id="dbQA">
+                        <!-- DB Q/A 1..20 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc1" aria-expanded="false" aria-controls="dbc1">
+                                    Q1. What is normalization? Why use it?
+                                </button>
+                            </h2>
+                            <div id="dbc1" class="accordion-collapse collapse" aria-labelledby="dbq1"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Normalization organizes tables to reduce redundancy and
+                                    improve integrity by applying normal forms (1NF, 2NF, 3NF, BCNF).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc2" aria-expanded="false" aria-controls="dbc2">
+                                    Q2. What are ACID properties?
+                                </button>
+                            </h2>
+                            <div id="dbc2" class="accordion-collapse collapse" aria-labelledby="dbq2"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">ACID: Atomicity (all or nothing), Consistency (DB rules
+                                    preserved), Isolation (transactions don't interfere), Durability (committed changes
+                                    persist).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc3" aria-expanded="false" aria-controls="dbc3">
+                                    Q3. What is an index and types of indexes?
+                                </button>
+                            </h2>
+                            <div id="dbc3" class="accordion-collapse collapse" aria-labelledby="dbq3"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Index speeds lookups. Types: B-tree (balanced), Hash
+                                    (exact-match), Bitmap (low-cardinality), and clustered vs non-clustered indexes.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc4" aria-expanded="false" aria-controls="dbc4">
+                                    Q4. What is a transaction?
+                                </button>
+                            </h2>
+                            <div id="dbc4" class="accordion-collapse collapse" aria-labelledby="dbq4"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">A transaction is a sequence of DB operations that execute as
+                                    a single unit, maintaining ACID properties; it’s committed or rolled back.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc5" aria-expanded="false" aria-controls="dbc5">
+                                    Q5. What is isolation level? Name types.
+                                </button>
+                            </h2>
+                            <div id="dbc5" class="accordion-collapse collapse" aria-labelledby="dbq5"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Isolation levels: Read Uncommitted, Read Committed,
+                                    Repeatable Read, Serializable — trade-offs between consistency and concurrency
+                                    (phenomena: dirty read, non-repeatable read, phantom read).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc6" aria-expanded="false" aria-controls="dbc6">
+                                    Q6. What is denormalization and when to use it?
+                                </button>
+                            </h2>
+                            <div id="dbc6" class="accordion-collapse collapse" aria-labelledby="dbq6"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Denormalization intentionally adds redundancy to improve
+                                    read performance or simplify queries in high-read systems, at cost of update
+                                    complexity.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc7" aria-expanded="false" aria-controls="dbc7">
+                                    Q7. Explain primary key vs foreign key.
+                                </button>
+                            </h2>
+                            <div id="dbc7" class="accordion-collapse collapse" aria-labelledby="dbq7"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Primary key uniquely identifies a row. Foreign key
+                                    references primary key of another table to enforce referential integrity.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc8" aria-expanded="false" aria-controls="dbc8">
+                                    Q8. What is a view?
+                                </button>
+                            </h2>
+                            <div id="dbc8" class="accordion-collapse collapse" aria-labelledby="dbq8"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">A view is a virtual table defined by a query; it simplifies
+                                    complex queries, encapsulates logic, and can provide security abstraction.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc9" aria-expanded="false" aria-controls="dbc9">
+                                    Q9. What is indexing cost?
+                                </button>
+                            </h2>
+                            <div id="dbc9" class="accordion-collapse collapse" aria-labelledby="dbq9"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Indexes speed reads but add storage and slow writes
+                                    (inserts/updates) because indexes must be maintained; choose indexes strategically.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc10" aria-expanded="false" aria-controls="dbc10">
+                                    Q10. What is partitioning?
+                                </button>
+                            </h2>
+                            <div id="dbc10" class="accordion-collapse collapse" aria-labelledby="dbq10"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Partitioning splits large tables into smaller pieces
+                                    (horizontal/vertical) to improve manageability and query performance across
+                                    partitions.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc11" aria-expanded="false" aria-controls="dbc11">
+                                    Q11. What is a transaction log?
+                                </button>
+                            </h2>
+                            <div id="dbc11" class="accordion-collapse collapse" aria-labelledby="dbq11"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Transaction log records DB changes for durability and
+                                    recovery; used to replay or roll back transactions during crash recovery.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc12" aria-expanded="false" aria-controls="dbc12">
+                                    Q12. What is concurrency control?
+                                </button>
+                            </h2>
+                            <div id="dbc12" class="accordion-collapse collapse" aria-labelledby="dbq12"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Concurrency control ensures correct results when multiple
+                                    transactions run concurrently via locking protocols, MVCC, and optimistic
+                                    concurrency control.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq13">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc13" aria-expanded="false" aria-controls="dbc13">
+                                    Q13. What is MVCC?
+                                </button>
+                            </h2>
+                            <div id="dbc13" class="accordion-collapse collapse" aria-labelledby="dbq13"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Multi-Version Concurrency Control keeps multiple versions of
+                                    data to allow readers to see a consistent snapshot while writers create new
+                                    versions, improving concurrency.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq14">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc14" aria-expanded="false" aria-controls="dbc14">
+                                    Q14. What is a deadlock in DB and how handled?
+                                </button>
+                            </h2>
+                            <div id="dbc14" class="accordion-collapse collapse" aria-labelledby="dbq14"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">DB deadlock: transactions wait for locks held by each other.
+                                    Handled by detection (wait-for graph) and resolution (abort/rollback one
+                                    transaction).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq15">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc15" aria-expanded="false" aria-controls="dbc15">
+                                    Q15. What is schema vs instance?
+                                </button>
+                            </h2>
+                            <div id="dbc15" class="accordion-collapse collapse" aria-labelledby="dbq15"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Schema is the database structure (design). Instance is the
+                                    actual data stored at a point in time.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq16">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc16" aria-expanded="false" aria-controls="dbc16">
+                                    Q16. When use NoSQL vs SQL?
+                                </button>
+                            </h2>
+                            <div id="dbc16" class="accordion-collapse collapse" aria-labelledby="dbq16"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Use NoSQL for flexible schema, horizontal scaling, and high
+                                    write throughput. Use SQL for complex transactions, strong consistency, and
+                                    relational data.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq17">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc17" aria-expanded="false" aria-controls="dbc17">
+                                    Q17. What is eventual consistency?
+                                </button>
+                            </h2>
+                            <div id="dbc17" class="accordion-collapse collapse" aria-labelledby="dbq17"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Eventual consistency means updates propagate asynchronously;
+                                    replicas become consistent over time, trading immediate consistency for availability
+                                    and partition tolerance.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq18">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc18" aria-expanded="false" aria-controls="dbc18">
+                                    Q18. What is a join and types of joins?
+                                </button>
+                            </h2>
+                            <div id="dbc18" class="accordion-collapse collapse" aria-labelledby="dbq18"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Join combines rows from tables: INNER (intersection), LEFT
+                                    (all left + matched right), RIGHT, FULL OUTER (all), CROSS (Cartesian product).
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq19">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc19" aria-expanded="false" aria-controls="dbc19">
+                                    Q19. How to tune slow queries?
+                                </button>
+                            </h2>
+                            <div id="dbc19" class="accordion-collapse collapse" aria-labelledby="dbq19"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Use EXPLAIN, add/select proper indexes, avoid SELECT *,
+                                    optimize joins, use caching, and consider schema/partition/denormalization for heavy
+                                    reads.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="dbq20">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#dbc20" aria-expanded="false" aria-controls="dbc20">
+                                    Q20. What is replication and types?
+                                </button>
+                            </h2>
+                            <div id="dbc20" class="accordion-collapse collapse" aria-labelledby="dbq20"
+                                data-bs-parent="#dbQA">
+                                <div class="accordion-body">Replication duplicates data across nodes. Types:
+                                    master-slave (primary-secondary), master-master (multi-primary), synchronous vs
+                                    asynchronous replication for consistency trade-offs.</div>
+                            </div>
+                        </div>
+                        <!-- end DB Q/A -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4) OOP (Java + C++) -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOOP">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOOP" aria-expanded="false" aria-controls="collapseOOP">
+                    OOP (Java + C++) — Core OOPS concepts + 20 Q/A
+                </button>
+            </h2>
+            <div id="collapseOOP" class="accordion-collapse collapse" aria-labelledby="headingOOP"
+                data-bs-parent="#subjectsAccordion">
+                <div class="accordion-body">
+                    <p><strong>FAQ (quick):</strong></p>
+                    <ul>
+                        <li>OOP pillars: Encapsulation, Abstraction, Inheritance, Polymorphism.</li>
+                        <li>Difference: Java has garbage collection; C++ provides manual memory control and multiple
+                            inheritance (via virtual inheritance).</li>
+                    </ul>
+
+                    <hr>
+                    <div class="accordion" id="oopQA">
+                        <!-- OOP Q/A 1..20 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc1" aria-expanded="false" aria-controls="oopc1">
+                                    Q1. What is encapsulation?
+                                </button>
+                            </h2>
+                            <div id="oopc1" class="accordion-collapse collapse" aria-labelledby="oopq1"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Encapsulation hides internal state and exposes behavior via
+                                    methods, bundling data and methods together to protect object integrity.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc2" aria-expanded="false" aria-controls="oopc2">
+                                    Q2. What is inheritance and types?
+                                </button>
+                            </h2>
+                            <div id="oopc2" class="accordion-collapse collapse" aria-labelledby="oopq2"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Inheritance allows a class to derive from another. Types:
+                                    single, multiple (C++), multilevel, hierarchical. Java supports single class
+                                    inheritance (interfaces for multiple behavior).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc3" aria-expanded="false" aria-controls="oopc3">
+                                    Q3. What is polymorphism?
+                                </button>
+                            </h2>
+                            <div id="oopc3" class="accordion-collapse collapse" aria-labelledby="oopq3"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Polymorphism lets objects take multiple forms: compile-time
+                                    (method overloading) and runtime (method overriding with virtual/override keywords
+                                    or dynamic dispatch).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc4" aria-expanded="false" aria-controls="oopc4">
+                                    Q4. What is abstraction?
+                                </button>
+                            </h2>
+                            <div id="oopc4" class="accordion-collapse collapse" aria-labelledby="oopq4"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Abstraction exposes essential features while hiding
+                                    implementation details, using abstract classes or interfaces to define contracts.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc5" aria-expanded="false" aria-controls="oopc5">
+                                    Q5. Java vs C++: memory management differences?
+                                </button>
+                            </h2>
+                            <div id="oopc5" class="accordion-collapse collapse" aria-labelledby="oopq5"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Java uses garbage collection for automatic memory
+                                    management; C++ uses manual allocation/deallocation (new/delete) and RAII patterns
+                                    for deterministic cleanup.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc6" aria-expanded="false" aria-controls="oopc6">
+                                    Q6. What is method overloading vs overriding?
+                                </button>
+                            </h2>
+                            <div id="oopc6" class="accordion-collapse collapse" aria-labelledby="oopq6"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Overloading: same method name, different params
+                                    (compile-time). Overriding: subclass provides different implementation for base
+                                    method (runtime polymorphism).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc7" aria-expanded="false" aria-controls="oopc7">
+                                    Q7. What is virtual function in C++?
+                                </button>
+                            </h2>
+                            <div id="oopc7" class="accordion-collapse collapse" aria-labelledby="oopq7"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Virtual function enables dynamic dispatch: calls resolved at
+                                    runtime based on actual object's type allowing polymorphic behavior in C++.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc8" aria-expanded="false" aria-controls="oopc8">
+                                    Q8. What is interface (Java) vs abstract class?
+                                </button>
+                            </h2>
+                            <div id="oopc8" class="accordion-collapse collapse" aria-labelledby="oopq8"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Interface defines contract (methods without state) and
+                                    allows multiple inheritance of type; abstract class can have state and partial
+                                    implementation. Java interfaces can have default methods now.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc9" aria-expanded="false" aria-controls="oopc9">
+                                    Q9. Explain RAII in C++.
+                                </button>
+                            </h2>
+                            <div id="oopc9" class="accordion-collapse collapse" aria-labelledby="oopq9"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">RAII (Resource Acquisition Is Initialization) ties resource
+                                    lifetime to object lifetime so resources are released in destructors, ensuring
+                                    exception-safe cleanup.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc10" aria-expanded="false" aria-controls="oopc10">
+                                    Q10. What is multiple inheritance problem and solution in C++?
+                                </button>
+                            </h2>
+                            <div id="oopc10" class="accordion-collapse collapse" aria-labelledby="oopq10"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Diamond problem arises with multiple inheritance; solve
+                                    using virtual inheritance to ensure only one base subobject is present.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc11" aria-expanded="false" aria-controls="oopc11">
+                                    Q11. What is constructor vs destructor?
+                                </button>
+                            </h2>
+                            <div id="oopc11" class="accordion-collapse collapse" aria-labelledby="oopq11"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Constructor initializes an object. Destructor (C++) cleans
+                                    up before object destruction. Java has finalize (deprecated) and relies on GC for
+                                    cleanup.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc12" aria-expanded="false" aria-controls="oopc12">
+                                    Q12. What is exception handling difference in Java vs C++?
+                                </button>
+                            </h2>
+                            <div id="oopc12" class="accordion-collapse collapse" aria-labelledby="oopq12"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Both have try-catch. Java enforces checked exceptions while
+                                    C++ does not. C++ destructors help cleanup during stack unwinding; Java uses finally
+                                    blocks for cleanup.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq13">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc13" aria-expanded="false" aria-controls="oopc13">
+                                    Q13. What is composition vs inheritance?
+                                </button>
+                            </h2>
+                            <div id="oopc13" class="accordion-collapse collapse" aria-labelledby="oopq13"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Composition (has-a) embeds objects as members; prefer
+                                    composition for flexibility. Inheritance (is-a) is used for specialization but can
+                                    lead to tight coupling.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq14">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc14" aria-expanded="false" aria-controls="oopc14">
+                                    Q14. What is SOLID?
+                                </button>
+                            </h2>
+                            <div id="oopc14" class="accordion-collapse collapse" aria-labelledby="oopq14"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">SOLID: Single Responsibility, Open/Closed, Liskov
+                                    Substitution, Interface Segregation, Dependency Inversion — principles for
+                                    maintainable OOP design.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq15">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc15" aria-expanded="false" aria-controls="oopc15">
+                                    Q15. What is Liskov Substitution Principle?
+                                </button>
+                            </h2>
+                            <div id="oopc15" class="accordion-collapse collapse" aria-labelledby="oopq15"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Subtypes must be substitutable for their base types without
+                                    altering program correctness — derived classes should honor base contracts.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq16">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc16" aria-expanded="false" aria-controls="oopc16">
+                                    Q16. What is dependency injection?
+                                </button>
+                            </h2>
+                            <div id="oopc16" class="accordion-collapse collapse" aria-labelledby="oopq16"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Dependency injection provides dependencies from outside a
+                                    class (constructor/setter) to reduce coupling and improve testability.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq17">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc17" aria-expanded="false" aria-controls="oopc17">
+                                    Q17. What is method overriding behavior in Java with final and static methods?
+                                </button>
+                            </h2>
+                            <div id="oopc17" class="accordion-collapse collapse" aria-labelledby="oopq17"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Final methods cannot be overridden. Static methods are bound
+                                    at compile time and cannot be overridden; they can be hidden by subclass methods
+                                    with same signature.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq18">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc18" aria-expanded="false" aria-controls="oopc18">
+                                    Q18. What is smart pointer in C++?
+                                </button>
+                            </h2>
+                            <div id="oopc18" class="accordion-collapse collapse" aria-labelledby="oopq18"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Smart pointers (unique_ptr, shared_ptr, weak_ptr) automate
+                                    memory management with ownership semantics to avoid leaks and dangling pointers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq19">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc19" aria-expanded="false" aria-controls="oopc19">
+                                    Q19. When use interface vs abstract class in Java?
+                                </button>
+                            </h2>
+                            <div id="oopc19" class="accordion-collapse collapse" aria-labelledby="oopq19"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Use interface to define behavior without state and allow
+                                    multiple type inheritance; use abstract class to share code and state among related
+                                    classes.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="oopq20">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#oopc20" aria-expanded="false" aria-controls="oopc20">
+                                    Q20. Explain object slicing in C++.
+                                </button>
+                            </h2>
+                            <div id="oopc20" class="accordion-collapse collapse" aria-labelledby="oopq20"
+                                data-bs-parent="#oopQA">
+                                <div class="accordion-body">Object slicing occurs when a derived class object is
+                                    assigned to a base class object by value, losing derived-specific data; use
+                                    pointers/references to avoid slicing.</div>
+                            </div>
+                        </div>
+                        <!-- end OOP Q/A -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5) Core Java + C++ Concepts -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingCore">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseCore" aria-expanded="false" aria-controls="collapseCore">
+                    Core Java + C++ Concepts — 20 Q/A
+                </button>
+            </h2>
+            <div id="collapseCore" class="accordion-collapse collapse" aria-labelledby="headingCore"
+                data-bs-parent="#subjectsAccordion">
+                <div class="accordion-body">
+                    <p><strong>Quick list:</strong> JVM, JIT, garbage collection, memory model, pointers (C++),
+                        references, templates, STL, exceptions, threading.</p>
+                    <hr>
+                    <div class="accordion" id="coreQA">
+                        <!-- Core Q/A 1..20 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec1" aria-expanded="false" aria-controls="corec1">
+                                    Q1. What is JVM and JRE?
+                                </button>
+                            </h2>
+                            <div id="corec1" class="accordion-collapse collapse" aria-labelledby="coreq1"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">JRE provides runtime environment (libraries + JVM); JVM is
+                                    the virtual machine that executes Java bytecode and provides memory management and
+                                    JIT compilation.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec2" aria-expanded="false" aria-controls="corec2">
+                                    Q2. What is JIT compiler?
+                                </button>
+                            </h2>
+                            <div id="corec2" class="accordion-collapse collapse" aria-labelledby="coreq2"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">JIT (Just-In-Time) compiles frequently executed bytecode
+                                    into native machine code at runtime for performance improvements.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec3" aria-expanded="false" aria-controls="corec3">
+                                    Q3. Explain Java memory model basics.
+                                </button>
+                            </h2>
+                            <div id="corec3" class="accordion-collapse collapse" aria-labelledby="coreq3"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Java memory model covers how threads interact through
+                                    memory, visibility, ordering, and synchronization primitives to avoid race
+                                    conditions.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec4" aria-expanded="false" aria-controls="corec4">
+                                    Q4. What is garbage collection and types in Java?
+                                </button>
+                            </h2>
+                            <div id="corec4" class="accordion-collapse collapse" aria-labelledby="coreq4"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Garbage collectors: Serial, Parallel, CMS, G1, ZGC —
+                                    algorithms vary in throughput and pause-time trade-offs; GC reclaims unreachable
+                                    objects automatically.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec5" aria-expanded="false" aria-controls="corec5">
+                                    Q5. Explain pointer vs reference in C++.
+                                </button>
+                            </h2>
+                            <div id="corec5" class="accordion-collapse collapse" aria-labelledby="coreq5"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Pointer stores memory address and can be null/change;
+                                    reference is an alias and must be initialized, cannot be reseated or null (safer
+                                    syntax).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec6" aria-expanded="false" aria-controls="corec6">
+                                    Q6. What are templates in C++?
+                                </button>
+                            </h2>
+                            <div id="corec6" class="accordion-collapse collapse" aria-labelledby="coreq6"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Templates enable generic programming; function and class
+                                    templates are instantiated by compiler for types used, providing type-safe code
+                                    reuse.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec7" aria-expanded="false" aria-controls="corec7">
+                                    Q7. What is STL? Name components.
+                                </button>
+                            </h2>
+                            <div id="corec7" class="accordion-collapse collapse" aria-labelledby="coreq7"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">STL (Standard Template Library) has containers (vector,
+                                    list, map), iterators, algorithms (sort, find), and functors to write generic,
+                                    efficient code.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec8" aria-expanded="false" aria-controls="corec8">
+                                    Q8. What is exception safety in C++?
+                                </button>
+                            </h2>
+                            <div id="corec8" class="accordion-collapse collapse" aria-labelledby="coreq8"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Exception safety levels: basic (no leaks), strong
+                                    (transactional rollback), and no-throw (guarantee). Use RAII and smart pointers to
+                                    ensure safety.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec9" aria-expanded="false" aria-controls="corec9">
+                                    Q9. What are Java collections and differences between List, Set, Map?
+                                </button>
+                            </h2>
+                            <div id="corec9" class="accordion-collapse collapse" aria-labelledby="coreq9"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">List allows ordered duplicates; Set stores unique elements;
+                                    Map stores key-value pairs with unique keys. Implementations differ: ArrayList vs
+                                    LinkedList, HashSet vs TreeSet, HashMap vs TreeMap.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec10" aria-expanded="false" aria-controls="corec10">
+                                    Q10. What is synchronization in Java?
+                                </button>
+                            </h2>
+                            <div id="corec10" class="accordion-collapse collapse" aria-labelledby="coreq10"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Synchronization prevents concurrent access issues. Use
+                                    synchronized keyword, locks, or concurrent utilities (ConcurrentHashMap,
+                                    ReentrantLock) to control thread access.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec11" aria-expanded="false" aria-controls="corec11">
+                                    Q11. What is volatile in Java?
+                                </button>
+                            </h2>
+                            <div id="corec11" class="accordion-collapse collapse" aria-labelledby="coreq11"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">volatile ensures reads/writes go to main memory and enforces
+                                    visibility; it doesn't provide atomicity for compound actions.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec12" aria-expanded="false" aria-controls="corec12">
+                                    Q12. What is move semantics in C++?
+                                </button>
+                            </h2>
+                            <div id="corec12" class="accordion-collapse collapse" aria-labelledby="coreq12"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Move semantics (rvalue references) allow resources to be
+                                    moved instead of copied, improving performance by transferring ownership without
+                                    expensive allocations.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq13">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec13" aria-expanded="false" aria-controls="corec13">
+                                    Q13. What are generics in Java?
+                                </button>
+                            </h2>
+                            <div id="corec13" class="accordion-collapse collapse" aria-labelledby="coreq13"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Generics provide compile-time type safety by allowing
+                                    classes and methods to operate on specified types without casting (e.g., List
+                                    <String>).
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq14">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec14" aria-expanded="false" aria-controls="corec14">
+                                    Q14. What is undefined behaviour in C++?
+                                </button>
+                            </h2>
+                            <div id="corec14" class="accordion-collapse collapse" aria-labelledby="coreq14"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Undefined behavior is behavior not defined by the C++
+                                    standard (e.g., dereferencing null). It can lead to unpredictable results and must
+                                    be avoided.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq15">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec15" aria-expanded="false" aria-controls="corec15">
+                                    Q15. How to avoid memory leaks in C++?
+                                </button>
+                            </h2>
+                            <div id="corec15" class="accordion-collapse collapse" aria-labelledby="coreq15"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Use smart pointers (unique_ptr/shared_ptr), RAII, and ensure
+                                    every new has a matching delete or use container-managed resources to avoid leaks.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq16">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec16" aria-expanded="false" aria-controls="corec16">
+                                    Q16. What is finalizer vs try-with-resources in Java?
+                                </button>
+                            </h2>
+                            <div id="corec16" class="accordion-collapse collapse" aria-labelledby="coreq16"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">finalize is deprecated and unpredictable; try-with-resources
+                                    ensures deterministic resource cleanup by auto-closing Closeable resources at block
+                                    exit.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq17">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec17" aria-expanded="false" aria-controls="corec17">
+                                    Q17. What is template specialization?
+                                </button>
+                            </h2>
+                            <div id="corec17" class="accordion-collapse collapse" aria-labelledby="coreq17"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Template specialization customizes behavior for specific
+                                    types so you can provide a different implementation for particular template
+                                    parameters.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq18">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec18" aria-expanded="false" aria-controls="corec18">
+                                    Q18. What is classloader in Java?
+                                </button>
+                            </h2>
+                            <div id="corec18" class="accordion-collapse collapse" aria-labelledby="coreq18"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Classloader loads classes into JVM. Types: bootstrap,
+                                    extension, and application classloaders. Custom classloaders can load classes from
+                                    nonstandard sources.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq19">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec19" aria-expanded="false" aria-controls="corec19">
+                                    Q19. Explain exception hierarchy in Java.
+                                </button>
+                            </h2>
+                            <div id="corec19" class="accordion-collapse collapse" aria-labelledby="coreq19"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">Throwable -> Error (serious problems) and Exception ->
+                                    RuntimeException (unchecked) and checked exceptions. Handle checked exceptions or
+                                    declare them.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coreq20">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#corec20" aria-expanded="false" aria-controls="corec20">
+                                    Q20. What is SFINAE in C++?
+                                </button>
+                            </h2>
+                            <div id="corec20" class="accordion-collapse collapse" aria-labelledby="coreq20"
+                                data-bs-parent="#coreQA">
+                                <div class="accordion-body">SFINAE (Substitution Failure Is Not An Error) is a template
+                                    metaprogramming technique where invalid substitutions remove overloads, enabling
+                                    compile-time selection. Useful in template-based dispatch.</div>
+                            </div>
+                        </div>
+                        <!-- end Core Q/A -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6) System Design (Beginner) -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSD">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseSD" aria-expanded="false" aria-controls="collapseSD">
+                    System Design (Beginner) — FAQ + 20 Q/A
+                </button>
+            </h2>
+            <div id="collapseSD" class="accordion-collapse collapse" aria-labelledby="headingSD"
+                data-bs-parent="#subjectsAccordion">
+                <div class="accordion-body">
+                    <p><strong>FAQ (quick):</strong></p>
+                    <ul>
+                        <li>Focus: scalability, availability, trade-offs, CAP theorem, caching, data partitioning.</li>
+                        <li>Start with requirements, constraints, API design, high-level components, data models, and
+                            bottlenecks.</li>
+                    </ul>
+
+                    <hr>
+                    <div class="accordion" id="sdQA">
+                        <!-- SD Q/A 1..20 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc1" aria-expanded="false" aria-controls="sdc1">
+                                    Q1. How to start a system design interview?
+                                </button>
+                            </h2>
+                            <div id="sdc1" class="accordion-collapse collapse" aria-labelledby="sdq1"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Clarify requirements, scope, and constraints. Estimate
+                                    traffic, define APIs, sketch high-level components, then drill into storage,
+                                    caching, and bottlenecks.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc2" aria-expanded="false" aria-controls="sdc2">
+                                    Q2. What is load balancing and types?
+                                </button>
+                            </h2>
+                            <div id="sdc2" class="accordion-collapse collapse" aria-labelledby="sdq2"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Load balancers distribute requests across servers. Types:
+                                    Layer-4 (IP/TCP) and Layer-7 (HTTP-aware). Algorithms: round-robin, least
+                                    connections, weighted.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc3" aria-expanded="false" aria-controls="sdc3">
+                                    Q3. What is caching and where to use it?
+                                </button>
+                            </h2>
+                            <div id="sdc3" class="accordion-collapse collapse" aria-labelledby="sdq3"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Caching stores frequently accessed data close to consumers
+                                    (in-memory caches like Redis, CDN edge caches) to reduce latency and load on origin
+                                    systems.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc4" aria-expanded="false" aria-controls="sdc4">
+                                    Q4. What is database sharding/partitioning?
+                                </button>
+                            </h2>
+                            <div id="sdc4" class="accordion-collapse collapse" aria-labelledby="sdq4"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Sharding splits data horizontally across multiple DB
+                                    instances for scale. Choose shard key carefully to balance load and minimize
+                                    cross-shard queries.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc5" aria-expanded="false" aria-controls="sdc5">
+                                    Q5. Explain CAP theorem.
+                                </button>
+                            </h2>
+                            <div id="sdc5" class="accordion-collapse collapse" aria-labelledby="sdq5"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">CAP: Consistency, Availability, Partition tolerance — in the
+                                    presence of network partitions you can only guarantee two of the three. Real systems
+                                    choose trade-offs per requirements.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc6" aria-expanded="false" aria-controls="sdc6">
+                                    Q6. How to design a URL shortening service (high level)?
+                                </button>
+                            </h2>
+                            <div id="sdc6" class="accordion-collapse collapse" aria-labelledby="sdq6"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Define API, use base62 short codes, store mapping in DB, use
+                                    caching for hot keys, handle collisions, consider expiry, and scale DB via sharding
+                                    or consistent hashing.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc7" aria-expanded="false" aria-controls="sdc7">
+                                    Q7. What is consistent hashing?
+                                </button>
+                            </h2>
+                            <div id="sdc7" class="accordion-collapse collapse" aria-labelledby="sdq7"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Consistent hashing maps keys to a circular space of nodes;
+                                    when nodes change, only a subset of keys remap—useful for distributed caches and
+                                    partitioned stores.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc8" aria-expanded="false" aria-controls="sdc8">
+                                    Q8. What is eventual consistency in distributed systems?
+                                </button>
+                            </h2>
+                            <div id="sdc8" class="accordion-collapse collapse" aria-labelledby="sdq8"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Eventual consistency means updates propagate asynchronously
+                                    and replicas converge over time; it's chosen for availability and partition
+                                    tolerance trade-offs.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc9" aria-expanded="false" aria-controls="sdc9">
+                                    Q9. How to design a chat system (basics)?
+                                </button>
+                            </h2>
+                            <div id="sdc9" class="accordion-collapse collapse" aria-labelledby="sdq9"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Use websockets for real-time delivery, stateless backend,
+                                    message store in DB, deliver via fanout services or pub/sub, scale using shards and
+                                    sticky sessions for stateful connections.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc10" aria-expanded="false" aria-controls="sdc10">
+                                    Q10. What is a message queue and why use it?
+                                </button>
+                            </h2>
+                            <div id="sdc10" class="accordion-collapse collapse" aria-labelledby="sdq10"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Message queues (Kafka, RabbitMQ) decouple producers and
+                                    consumers, buffer bursts, enable asynchronous processing, and improve system
+                                    resilience and scalability.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc11" aria-expanded="false" aria-controls="sdc11">
+                                    Q11. What is database connection pooling?
+                                </button>
+                            </h2>
+                            <div id="sdc11" class="accordion-collapse collapse" aria-labelledby="sdq11"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Connection pooling reuses DB connections reducing overhead
+                                    of establishing connections, improving throughput and latency for DB-heavy
+                                    workloads.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc12" aria-expanded="false" aria-controls="sdc12">
+                                    Q12. What is backpressure and why important?
+                                </button>
+                            </h2>
+                            <div id="sdc12" class="accordion-collapse collapse" aria-labelledby="sdq12"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Backpressure signals producers to slow down when consumers
+                                    can't keep up, preventing overload and memory/exhaustion issues in pipelines and
+                                    streaming systems.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq13">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc13" aria-expanded="false" aria-controls="sdc13">
+                                    Q13. How to cache writes safely (write-through vs write-back)?
+                                </button>
+                            </h2>
+                            <div id="sdc13" class="accordion-collapse collapse" aria-labelledby="sdq13"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Write-through writes to cache and DB synchronously (safer,
+                                    slower). Write-back writes to cache and lazily to DB (faster, riskier if cache
+                                    lost).</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq14">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc14" aria-expanded="false" aria-controls="sdc14">
+                                    Q14. What is CQRS?
+                                </button>
+                            </h2>
+                            <div id="sdc14" class="accordion-collapse collapse" aria-labelledby="sdq14"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">CQRS (Command Query Responsibility Segregation) separates
+                                    read and write models allowing optimized data views and scaling reads/writes
+                                    independently.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq15">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc15" aria-expanded="false" aria-controls="sdc15">
+                                    Q15. How to design for high availability?
+                                </button>
+                            </h2>
+                            <div id="sdc15" class="accordion-collapse collapse" aria-labelledby="sdq15"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Use redundancy, stateless services, health checks, failover,
+                                    multi-AZ deployments, data replication, and automated recovery to minimize downtime.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq16">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc16" aria-expanded="false" aria-controls="sdc16">
+                                    Q16. What is bloom filter and use-case?
+                                </button>
+                            </h2>
+                            <div id="sdc16" class="accordion-collapse collapse" aria-labelledby="sdq16"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Bloom filter is a space-efficient probabilistic data
+                                    structure to test set membership with false positives allowed; used in caching and
+                                    deduplication checks.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq17">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc17" aria-expanded="false" aria-controls="sdc17">
+                                    Q17. How to estimate system capacity and QPS?
+                                </button>
+                            </h2>
+                            <div id="sdc17" class="accordion-collapse collapse" aria-labelledby="sdq17"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Estimate requests per second (QPS) from user base and
+                                    patterns, estimate resource per request (CPU, memory), multiply and add headroom;
+                                    size servers and caches accordingly.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq18">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc18" aria-expanded="false" aria-controls="sdc18">
+                                    Q18. What is throttling vs rate limiting?
+                                </button>
+                            </h2>
+                            <div id="sdc18" class="accordion-collapse collapse" aria-labelledby="sdq18"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Rate limiting caps requests per client/time window.
+                                    Throttling slows or rejects excessive requests to protect system stability often
+                                    using token bucket or leaky bucket algorithms.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq19">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc19" aria-expanded="false" aria-controls="sdc19">
+                                    Q19. What are common bottlenecks and how to identify?
+                                </button>
+                            </h2>
+                            <div id="sdc19" class="accordion-collapse collapse" aria-labelledby="sdq19"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Common bottlenecks: DB, network, CPU, disk I/O. Identify
+                                    using metrics, APM traces, profiling, slow query logs, and load testing to pinpoint
+                                    where latency originates.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="sdq20">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#sdc20" aria-expanded="false" aria-controls="sdc20">
+                                    Q20. How to design for eventual consistency and reconciliation?
+                                </button>
+                            </h2>
+                            <div id="sdc20" class="accordion-collapse collapse" aria-labelledby="sdq20"
+                                data-bs-parent="#sdQA">
+                                <div class="accordion-body">Use versioning, timestamps, conflict resolution strategies
+                                    (last-write-wins, CRDTs, application-level merges), and background reconciliation
+                                    jobs to converge replicas.</div>
+                            </div>
+                        </div>
+                        <!-- end SD Q/A -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end subjects accordion -->
+</div>
+
+{% endblock %}

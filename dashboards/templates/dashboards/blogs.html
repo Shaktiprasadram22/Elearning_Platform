@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Recent Tech Blogs - ELearning Platform{% endblock %}
+
+{% block content %}
+
+<style>
+    .modal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+    }
+
+    .modal-box {
+        background: white;
+        width: 60%;
+        padding: 25px;
+        border-radius: 10px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+</style>
+
+<script>
+    const blogs = [
+        { "title": "Understanding JavaScript Event Loop", "excerpt": "A beginner-friendly explanation of how JS handles async code.", "content": "Full article: The JS event loop manages callbacks, microtasks...", "category": "JavaScript", "author": "Tech Insider", "views": 120, "published_date": "2025-01-01" },
+        { "title": "What is Docker? Complete Guide", "excerpt": "Learn how Docker containers work.", "content": "Full article: Docker is a containerization platform...", "category": "DevOps", "author": "Dev Ninja", "views": 210, "published_date": "2025-01-02" },
+        { "title": "Understanding REST APIs", "excerpt": "Learn how REST APIs work.", "content": "Full article: REST APIs follow stateless architecture...", "category": "Backend", "author": "Backend Boss", "views": 175, "published_date": "2025-01-03" },
+        { "title": "React useEffect Explained", "excerpt": "Simplest explanation of useEffect.", "content": "Full article: useEffect lets you run side effects...", "category": "ReactJS", "author": "Frontend Guy", "views": 98, "published_date": "2025-01-04" },
+        { "title": "DSA Roadmap 2025", "excerpt": "Master DSA in simple steps.", "content": "Full article: To master DSA start with arrays, linked lists...", "category": "DSA", "author": "Code Master", "views": 305, "published_date": "2025-01-05" },
+        { "title": "Kubernetes for Students", "excerpt": "Kubernetes in simple words.", "content": "Full article: Kubernetes orchestrates containerized apps...", "category": "DevOps", "author": "K8s Guru", "views": 452, "published_date": "2025-01-06" },
+        { "title": "MongoDB vs MySQL", "excerpt": "Which DB to learn first?", "content": "Full article: MongoDB is NoSQL, MySQL is relational...", "category": "Database", "author": "DB Expert", "views": 167, "published_date": "2025-01-07" },
+        { "title": "JWT Authentication", "excerpt": "How JWT works internally.", "content": "Full article: JWT contains header, payload and signature...", "category": "Security", "author": "Auth Pro", "views": 289, "published_date": "2025-01-08" },
+        { "title": "Python for AI", "excerpt": "Why Python dominates AI.", "content": "Full article: Python has rich AI libraries like TensorFlow...", "category": "AI/ML", "author": "AI Geek", "views": 612, "published_date": "2025-01-09" },
+        { "title": "Why C++ is Powerful", "excerpt": "C++ in system applications.", "content": "Full article: C++ offers low-level memory control...", "category": "C++", "author": "System Dev", "views": 312, "published_date": "2025-01-10" },
+
+        // 10 more
+        { "title": "Git Internals", "excerpt": "Inside Git.", "content": "Full article: Git stores commits as snapshots...", "category": "Tools", "author": "DevOps Knight", "views": 142, "published_date": "2025-01-11" },
+        { "title": "Async vs Sync", "excerpt": "When to use async code?", "content": "Full article: Async allows non-blocking operations...", "category": "Programming", "author": "Tech Blogger", "views": 245, "published_date": "2025-01-12" },
+        { "title": "Top VS Code Extensions", "excerpt": "Boost your coding.", "content": "Full article: Extensions like Prettier, GitLens help...", "category": "Tools", "author": "Frontend Wizard", "views": 503, "published_date": "2025-01-13" },
+        { "title": "SQL Joins Visualized", "excerpt": "SQL joins made easy.", "content": "Full article: Inner join returns intersection...", "category": "Database", "author": "DBA Guru", "views": 420, "published_date": "2025-01-14" },
+        { "title": "Backend Roadmap", "excerpt": "Become a backend dev.", "content": "Full article: Learn Node.js, Express, DBs, caching...", "category": "Backend", "author": "Tech Mentor", "views": 332, "published_date": "2025-01-15" },
+        { "title": "Cloud Basics", "excerpt": "Cloud explained.", "content": "Full article: Cloud computing offers on-demand resources...", "category": "Cloud", "author": "Cloud Master", "views": 271, "published_date": "2025-01-16" },
+        { "title": "Understanding Big-O", "excerpt": "Time complexity.", "content": "Full article: Big-O helps measure algorithm efficiency...", "category": "DSA", "author": "Coding Beast", "views": 515, "published_date": "2025-01-17" },
+        { "title": "API Rate Limiting", "excerpt": "How servers stay safe.", "content": "Full article: Rate limiting protects from overload...", "category": "Backend", "author": "System Engineer", "views": 248, "published_date": "2025-01-18" },
+        { "title": "Node.js REST API", "excerpt": "Beginner’s guide.", "content": "Full article: Build Express routes, controllers...", "category": "Node.js", "author": "Node Master", "views": 554, "published_date": "2025-01-19" },
+        { "title": "How OAuth2 Works", "excerpt": "OAuth2 simply.", "content": "Full article: OAuth2 is an authorization framework...", "category": "Security", "author": "Secure Dev", "views": 310, "published_date": "2025-01-20" }
+    ];
+
+    function openBlog(i) {
+        const b = blogs[i];
+        document.getElementById("modalTitle").innerText = b.title;
+        document.getElementById("modalMeta").innerText = `${b.author} • ${b.published_date}`;
+        document.getElementById("modalContent").innerText = b.content;
+        document.getElementById("modalBox").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("modalBox").style.display = "none";
+    }
+</script>
+
+<div class="container py-4">
+    <div class="mb-4">
+        <a href="{% url 'dashboards:student' %}" class="btn btn-sm btn-outline-secondary mb-3">← Back to Dashboard</a>
+        <h1>📚 Recent Tech Blogs</h1>
+        <p class="text-muted">Explore the latest tech articles and tutorials</p>
+    </div>
+
+    <div class="row">
+        <script>
+            blogs.forEach((blog, index) => {
+                document.write(`
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">${blog.category}</span>
+                                <h5 class="card-title">${blog.title}</h5>
+                                <p class="card-text">${blog.excerpt}</p>
+                                <small class="text-muted">${blog.author} • ${blog.published_date}</small>
+                                <br><br>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-light text-dark">${blog.views} Views</span>
+                                    <button onclick="openBlog(${index})" class="btn btn-sm btn-primary">Read Article</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            });
+        </script>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="modalBox" class="modal-bg">
+    <div class="modal-box">
+        <h3 id="modalTitle"></h3>
+        <small id="modalMeta" class="text-muted"></small>
+        <hr>
+        <p id="modalContent"></p>
+        <div class="text-end">
+            <button class="btn btn-danger mt-3" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

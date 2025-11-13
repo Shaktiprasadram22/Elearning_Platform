@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - E-Learning Platform{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <h2 class="card-title mb-4">My Profile</h2>
+
+                {% if user.profile.profile_picture %}
+                <div class="text-center mb-3">
+                    <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle"
+                        style="width: 150px; height: 150px; object-fit: cover;">
+                </div>
+                {% endif %}
+
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">First Name</label>
+                            {{ form.first_name }}
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Last Name</label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        {{ form.email }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        {{ form.phone }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Bio</label>
+                        {{ form.bio }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Profile Picture</label>
+                        {{ form.profile_picture }}
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Role:</strong>
+                        <span class="badge bg-info">{{ user.profile.get_role_display }}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Member Since:</strong> {{ user.profile.created_at|date:"F d, Y" }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                    <a href="{% url 'dashboards:redirect' %}" class="btn btn-secondary">Back to Dashboard</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

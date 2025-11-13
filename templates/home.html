@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - ELearning Platform{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <!-- Hero Section -->
+    <div class="alert text-center py-5 mb-5"
+        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+        <h1 class="display-4 mb-3">Welcome to ELearning Platform</h1>
+        <p class="lead">Master new skills with expert instructors and connect with learners worldwide</p>
+        <a href="{% url 'courses:list' %}" class="btn btn-light btn-lg">Explore Courses</a>
+    </div>
+
+    <!-- 1. Recent Tech Blogs -->
+    <div class="mb-5">
+        <h2 class="mb-4">📚 Recent Tech Blogs</h2>
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">{{ blog.category }}</span>
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <p class="card-text">{{ blog.excerpt|truncatewords:20 }}</p>
+                        <small class="text-muted">By {{ blog.author }} • {{ blog.published_date|date:"M d, Y" }}</small>
+                        <br><br>
+                        <a href="#" class="btn btn-sm btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No blogs available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 2. Learn for Interviews (Core Subjects) -->
+    <div class="mb-5">
+        <h2 class="mb-4">🎯 Learn for Interviews (Core Subjects)</h2>
+        <div class="row">
+            {% for subject in core_subjects %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ subject.name }}</h5>
+                        <p class="card-text">{{ subject.description|truncatewords:15 }}</p>
+                        <span class="badge bg-success">{{ subject.get_difficulty_display }}</span>
+                        <span class="badge bg-primary">{{ subject.resource_count }} Resources</span>
+                        <br><br>
+                        <a href="#" class="btn btn-sm btn-primary">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No core subjects available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 3. Trending Skills -->
+    <div class="mb-5">
+        <h2 class="mb-4">🔥 Trending Skills</h2>
+        <div class="row">
+            {% for skill in trending_skills %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ skill.name }}</h5>
+                        <p class="card-text">{{ skill.description|truncatewords:15 }}</p>
+                        {% if skill.demand_level == "high" %}
+                        <span class="badge bg-danger">High Demand</span>
+                        {% elif skill.demand_level == "medium" %}
+                        <span class="badge bg-warning">Medium Demand</span>
+                        {% else %}
+                        <span class="badge bg-info">Growing</span>
+                        {% endif %}
+                        <span class="badge bg-primary">{{ skill.courses_available }} Courses</span>
+                        <br><br>
+                        <a href="#" class="btn btn-sm btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No trending skills available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 4. Learning Paths -->
+    <div class="mb-5">
+        <h2 class="mb-4">🛤️ Learning Paths</h2>
+        <div class="row">
+            {% for path in learning_paths %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ path.title }}</h5>
+                        <p class="card-text">{{ path.description|truncatewords:15 }}</p>
+                        <span class="badge bg-primary">{{ path.duration_weeks }} Weeks</span>
+                        <span class="badge bg-success">{{ path.get_difficulty_display }}</span>
+                        <span class="badge bg-info">{{ path.enrolled_count }} Enrolled</span>
+                        <br><br>
+                        <a href="#" class="btn btn-sm btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No learning paths available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 5. Student Success Stories -->
+    <div class="mb-5">
+        <h2 class="mb-4">⭐ Student Success Stories</h2>
+        <div class="row">
+            {% for story in success_stories %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ story.student_name }}</h5>
+                        <p class="card-text"><strong>{{ story.story_title }}</strong></p>
+                        <p class="card-text">{{ story.story_content|truncatewords:30 }}</p>
+                        <span class="badge bg-success">{{ story.achievement }}</span>
+                        <br><br>
+                        <small class="text-muted">{{ story.date|date:"M d, Y" }}</small>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No success stories available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 6. Daily Quiz Box -->
+    {% if daily_quiz %}
+    <div class="mb-5">
+        <h2 class="mb-4">📝 Daily Quiz Challenge</h2>
+        <div class="alert"
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 30px;">
+            <h5>{{ daily_quiz.question }}</h5>
+            <div class="row mt-3">
+                {% for option in daily_quiz.options %}
+                <div class="col-md-6 mb-2">
+                    <button class="btn btn-outline-light w-100"
+                        onclick="alert('Answer: {{ daily_quiz.correct_answer }}\\n\\n{{ daily_quiz.explanation }}')">{{
+                        option }}</button>
+                </div>
+                {% endfor %}
+            </div>
+            <small class="mt-3">Difficulty: <strong>{{ daily_quiz.get_difficulty_display }}</strong></small>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- 7. Free Resources (Notes, Cheat Sheets) -->
+    <div class="mb-5">
+        <h2 class="mb-4">📥 Free Resources (Notes, Cheat Sheets)</h2>
+        <div class="row">
+            {% for resource in free_resources %}
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title mb-1">{{ resource.title }}</h6>
+                            <small class="text-muted">{{ resource.subject }} • {{ resource.downloads }}
+                                Downloads</small>
+                        </div>
+                        <a href="{{ resource.file_url }}" class="btn btn-sm btn-primary" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No resources available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 8. Upcoming Webinars -->
+    <div class="mb-5">
+        <h2 class="mb-4">🎤 Upcoming Webinars</h2>
+        <div class="row">
+            {% for webinar in upcoming_webinars %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <span class="badge bg-primary">{{ webinar.date|date:"M d, Y - H:i" }}</span>
+                        <h5 class="card-title mt-2">{{ webinar.title }}</h5>
+                        <p class="card-text">{{ webinar.description|truncatewords:20 }}</p>
+                        <p class="mb-1"><strong>Speaker:</strong> {{ webinar.speaker }}</p>
+                        <p class="mb-1"><strong>Duration:</strong> {{ webinar.duration_minutes }} minutes</p>
+                        <p class="mb-3"><strong>Registered:</strong> {{ webinar.registered_count }} students</p>
+                        <a href="{{ webinar.registration_link }}" class="btn btn-sm btn-primary"
+                            target="_blank">Register Now</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No upcoming webinars at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 9. Community / Forum CTA -->
+    <div class="mb-5">
+        <div class="alert"
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 40px; text-align: center;">
+            <h3 class="mb-3">💬 Join Our Community</h3>
+            <p class="lead mb-4">Connect with thousands of learners, ask questions, and share knowledge in our active
+                community forum</p>
+            <a href="#" class="btn btn-light btn-lg">Visit Forum</a>
+        </div>
+    </div>
+
+    <!-- 10. Placement Corner -->
+    <div class="mb-5">
+        <h2 class="mb-4">💼 Placement Corner</h2>
+        <div class="row">
+            {% for placement in placement_opportunities %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h6 class="text-primary mb-1">{{ placement.company_name }}</h6>
+                        <h5 class="card-title">{{ placement.position }}</h5>
+                        <p class="text-success fw-bold mb-2">{{ placement.salary_range }}</p>
+                        <p class="card-text">{{ placement.description|truncatewords:20 }}</p>
+                        <p class="mb-2"><strong>Required Skills:</strong></p>
+                        <div class="mb-3">
+                            {% for skill in placement.required_skills %}
+                            <span class="badge bg-light text-dark">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                        <a href="{{ placement.application_link }}" class="btn btn-sm btn-primary" target="_blank">Apply
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No placement opportunities available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,343 @@
+/* Global Styles for E-Learning Platform */
+
+/* Root Variables */
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --body-bg: #f5f7fa;
+}
+
+/* Body Styling */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--body-bg);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navigation Styling */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* Card Enhancements */
+.card {
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  border-radius: 10px 10px 0 0 !important;
+  font-weight: 600;
+}
+
+/* Button Enhancements */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+/* Alert Styling */
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+/* Badge Styling */
+.badge {
+  padding: 0.4em 0.8em;
+  font-weight: 500;
+}
+
+/* Form Styling */
+.form-control,
+.form-select {
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  padding: 0.6rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Table Styling */
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: var(--dark-color);
+  color: white;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+/* Progress Bar */
+.progress {
+  height: 10px;
+  border-radius: 10px;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+
+/* List Group */
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.list-group-item.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Shadow Utilities */
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+/* Footer Styling */
+footer {
+  margin-top: auto;
+}
+
+/* Main Container */
+main {
+  min-height: calc(100vh - 200px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Loading Spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Image Styling */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Video Styling */
+video {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Text Utilities */
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Course Card Specific */
+.course-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.course-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Dashboard Stats Cards */
+.stat-card {
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.stat-card .display-4 {
+  font-weight: 700;
+}
+
+/* Messages/Alerts Animation */
+.alert {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0b5ed7;
+}
+
+/* Utility Classes */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.bg-gradient-info {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+/* Modal Enhancements */
+.modal-content {
+  border-radius: 12px;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: 2px solid #dee2e6;
+}
+
+.modal-footer {
+  border-top: 2px solid #dee2e6;
+}
+
+/* Tooltip Styling */
+.tooltip {
+  font-size: 0.875rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+}
+
+/* Print Styles */
+@media print {
+  .navbar,
+  .btn,
+  footer {
+    display: none;
+  }
+}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}All Courses - E-Learning Platform{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>All Courses</h1>
+    {% if user.profile.role == 'instructor' %}
+    <a href="{% url 'courses:create' %}" class="btn btn-primary">
+        ➕ Create New Course
+    </a>
+    {% endif %}
+</div>
+
+{% if courses %}
+<div class="row">
+    {% for course in courses %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            {% if course.thumbnail %}
+            <img src="{{ course.thumbnail.url }}" class="card-img-top" alt="{{ course.title }}"
+                style="height: 200px; object-fit: cover;">
+            {% else %}
+            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center"
+                style="height: 200px;">
+                <span class="text-white fs-1">📚</span>
+            </div>
+            {% endif %}
+
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ course.title }}</h5>
+                <p class="card-text text-muted">{{ course.description|truncatewords:20 }}</p>
+
+                <div class="mt-auto">
+                    <p class="mb-1">
+                        <strong>Instructor:</strong> {{ course.instructor.username }}
+                    </p>
+                    <p class="mb-1">
+                        <strong>Category:</strong>
+                        <span class="badge bg-info">{{ course.get_category_display }}</span>
+                    </p>
+                    <p class="mb-2">
+                        <strong>Price:</strong>
+                        <span class="text-success fw-bold">₹{{ course.price }}</span>
+                    </p>
+
+                    {% if course.id in enrolled_courses %}
+                    <span class="badge bg-success mb-2">✓ Enrolled</span>
+                    {% endif %}
+
+                    <a href="{% url 'courses:detail' course.id %}" class="btn btn-primary w-100">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info text-center">
+    <h4>No courses available yet</h4>
+    {% if user.profile.role == 'instructor' %}
+    <p>Be the first to create a course!</p>
+    <a href="{% url 'courses:create' %}" class="btn btn-primary">Create Course</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

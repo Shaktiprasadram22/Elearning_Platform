@@ -1,0 +1,28 @@
+# Django Framework
+Django==4.2
+
+# MongoDB Integration
+pymongo==4.6.1
+
+# Django Channels (WebSockets)
+channels==4.0.0
+daphne==4.0.0
+
+# Image Processing
+Pillow==10.0.0
+
+# Utilities
+python-dateutil==2.8.2
+
+# ASGI Server
+uvicorn[standard]==0.24.0
+
+# Optional: For development
+django-debug-toolbar==4.2.0
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Additional dependencies
+asgiref==3.7.2
+typing-extensions==4.8.0
